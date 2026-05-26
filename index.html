@@ -307,12 +307,11 @@
         </div>
     </div>
 
+    <script src="https://js.puter.com/v2/"></script>
     <script>
-    const GEMINI_API_KEY = 'AIzaSyCgNS6gXFgd7l0Uq95kBpPhlIfQcrzXI8g';
+    const PORTFOLIO_CONTEXT = `You are an AI assistant on Sanjay Prakash Ravi's portfolio website. Answer questions about him based on this context. Be concise, confident, and helpful. Keep answers under 3 sentences unless asked for detail. If asked something not covered, say "I'd suggest reaching out to Sanjay directly for that."
 
-    const PORTFOLIO_CONTEXT = `You are an AI assistant on Sanjay Prakash's portfolio website. Answer questions about him based on this context. Be concise, confident, and helpful. If asked something not covered, say "I'd suggest reaching out to Sanjay directly for that."
-
-About: Sanjay Prakash is a Business Analytics postgraduate (MSc) at Dublin Business School, Ireland. He holds a B.Tech in Computer Science & Business Systems from Anna University, Chennai. He has Oracle certification.
+About: Sanjay Prakash Ravi is a Business Analytics postgraduate (MSc) at Dublin Business School, Ireland. He holds a B.Tech in Computer Science & Business Systems from Anna University, Chennai. He has Oracle certification.
 
 Experience:
 1. Business Analyst Intern (9 months) - Conducted full-cycle market research for a startup. Projects included evaluating a US mental health teletherapy platform. Processes: Market Sizing (TAM/SAM), Competitive Landscape Analysis, Investor & Funding Benchmarking, User Review Mining, Regulatory & Compliance Mapping, Customer Segmentation, Go-to-Market Strategy, MVP Design, Partnership Strategy. Delivered go/no-go recommendations to leadership. Also did 2 more confidential research projects.
@@ -325,7 +324,7 @@ Experience:
 
 5. Sales Executive / Assistant Manager at Bennova E-commerce, Dublin - Monthly sales tracking, inventory management, cash handling, new product introduction, demand analysis.
 
-Skills: Python, SQL, Power BI, Tableau, Miro, Vibe Coding, AI Automations, Scrum, Market Research, Competitor Analysis, TAM/SAM/SOM, Business Model Design, Franchise Modeling, P&L Management, Client Pitching, Negotiation, Stakeholder Reporting.
+Skills: Python, SQL, Power BI, Tableau, Miro, UI/UX, Matlab, Bootstrap Studio, HTML, MS Office, AI Automations, Scrum, Market Research, Competitor Analysis, TAM/SAM/SOM, Business Model Design, Franchise Modeling, P&L Management, Client Pitching, Negotiation, Stakeholder Reporting.
 
 Recognition: Bronze Medal - 1st Asia Open Karate Championship (10+ years karate). Featured in 2 newspapers.
 
@@ -342,33 +341,15 @@ Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to internship and full-t
         input.value = '';
 
         addMessage(msg, 'user');
-
-        if (GEMINI_API_KEY === 'YOUR_GEMINI_API_KEY') {
-            addMessage('Please configure the Gemini API key to enable AI responses. Contact Sanjay directly at prakesh3851@gmail.com', 'bot');
-            return;
-        }
-
         addMessage('Thinking...', 'bot', 'thinking');
 
         try {
-            const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: PORTFOLIO_CONTEXT + '\n\nUser question: ' + msg }] }]
-                })
-            });
-            const data = await res.json();
+            const response = await puter.ai.chat(PORTFOLIO_CONTEXT + '\n\nUser question: ' + msg);
             document.getElementById('thinking')?.remove();
-            if (!res.ok) {
-                addMessage('Error: ' + (data.error?.message || 'API request failed'), 'bot');
-                return;
-            }
-            const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't process that. Try asking differently.";
-            addMessage(reply, 'bot');
+            addMessage(response, 'bot');
         } catch (e) {
             document.getElementById('thinking')?.remove();
-            addMessage('Connection error: ' + e.message, 'bot');
+            addMessage('Something went wrong. Please email Sanjay at prakesh3851@gmail.com', 'bot');
         }
     }
 
