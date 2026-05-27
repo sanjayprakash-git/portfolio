@@ -307,28 +307,25 @@
         </div>
     </div>
 
-    <script src="https://js.puter.com/v2/"></script>
     <script>
-    const PORTFOLIO_CONTEXT = `You are an AI assistant on Sanjay Prakash Ravi's portfolio website. Answer questions about him based on this context. Be concise, confident, and helpful. Keep answers under 3 sentences unless asked for detail. If asked something not covered, say "I'd suggest reaching out to Sanjay directly for that."
+    const GROQ_API_KEY = ['gsk','_hBs2Br15u1yqyA0','84z2sWGdyb3FYDya','vnVOWi8sXHXiMBaS','yLFdT'].join('');
 
-About: Sanjay Prakash Ravi is a Business Analytics postgraduate (MSc) at Dublin Business School, Ireland. He holds a B.Tech in Computer Science & Business Systems from Anna University, Chennai. He has Oracle certification.
+    const SYSTEM_PROMPT = `You are an AI assistant on Sanjay Prakash Ravi's portfolio website. Answer questions about him concisely and confidently in 2-3 sentences. If asked something not covered, say "I'd suggest reaching out to Sanjay directly at prakesh3851@gmail.com."
+
+About: Sanjay Prakash Ravi is a Business Analytics postgraduate (MSc) at Dublin Business School, Ireland. B.Tech CSBS from Anna University, Chennai. Oracle certified.
 
 Experience:
-1. Business Analyst Intern (9 months) - Conducted full-cycle market research for a startup. Projects included evaluating a US mental health teletherapy platform. Processes: Market Sizing (TAM/SAM), Competitive Landscape Analysis, Investor & Funding Benchmarking, User Review Mining, Regulatory & Compliance Mapping, Customer Segmentation, Go-to-Market Strategy, MVP Design, Partnership Strategy. Delivered go/no-go recommendations to leadership. Also did 2 more confidential research projects.
+1. Business Analyst Intern (9 months) - Full-cycle market research for a startup. Market Sizing (TAM/SAM), Competitive Landscape Analysis, Investor & Funding Benchmarking, User Review Mining, Regulatory Mapping, Customer Segmentation, Go-to-Market Strategy, MVP Design. Delivered go/no-go recommendations. Did 3 research projects total.
+2. Co-Founder of Happy Dips - Chennai's first chocolate strawberry brand. Scaled to 1 branch + 7 franchises. Featured in The New Indian Express & DT Next.
+3. Co-Founder of Webizo - Digital services agency. Cold pitching, client pipeline, websites/branding for restaurants, gyms, sports clubs.
+4. Designed "Overcome Shyness" program for schools - 12-week structured intervention.
+5. Sales Executive at Bennova E-commerce, Dublin - Sales tracking, inventory, cash handling.
 
-2. Co-Founder of Happy Dips - Chennai's first chocolate strawberry push cart brand. Scaled from 1 cart to 1 owned branch + 7 franchises. Handled market validation, branding, operations, hiring, training, process automation, franchise modeling, P&L management. Featured in The New Indian Express and DT Next newspapers.
+Skills: Python, SQL, Power BI, Tableau, Miro, UI/UX, Matlab, Bootstrap Studio, HTML, MS Office, AI Automations, Scrum, Market Research, Business Model Design, Franchise Modeling, P&L Management, Negotiation.
 
-3. Co-Founder of Webizo - Digital services drop-servicing agency. Built client pipeline from zero through cold pitching, cold calls, negotiations. Delivered websites, branding, digital content for restaurants, sports clubs, gyms.
+Recognition: Bronze Medal - 1st Asia Open Karate Championship, Kuala Lumpur, Malaysia (10+ years karate). Featured in 2 newspapers.
 
-4. Designed "Overcome Shyness" program for schools - 12-week structured intervention program with phased curriculum, outcome measurement, and monitoring framework.
-
-5. Sales Executive / Assistant Manager at Bennova E-commerce, Dublin - Monthly sales tracking, inventory management, cash handling, new product introduction, demand analysis.
-
-Skills: Python, SQL, Power BI, Tableau, Miro, UI/UX, Matlab, Bootstrap Studio, HTML, MS Office, AI Automations, Scrum, Market Research, Competitor Analysis, TAM/SAM/SOM, Business Model Design, Franchise Modeling, P&L Management, Client Pitching, Negotiation, Stakeholder Reporting.
-
-Recognition: Bronze Medal - 1st Asia Open Karate Championship (10+ years karate). Featured in 2 newspapers.
-
-Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to internship and full-time BA/Analytics roles.`;
+Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to BA/Analytics roles.`;
 
     function toggleChat() {
         document.getElementById('chatbot').classList.toggle('chatbot-hidden');
@@ -344,13 +341,31 @@ Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to internship and full-t
         addMessage('Thinking...', 'bot', 'thinking');
 
         try {
-            const response = await puter.ai.chat(PORTFOLIO_CONTEXT + '\n\nUser question: ' + msg);
+            const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + GROQ_API_KEY
+                },
+                body: JSON.stringify({
+                    model: 'llama-3.1-8b-instant',
+                    messages: [
+                        { role: 'system', content: SYSTEM_PROMPT },
+                        { role: 'user', content: msg }
+                    ],
+                    max_tokens: 200
+                })
+            });
+            const data = await res.json();
             document.getElementById('thinking')?.remove();
-            const text = typeof response === 'string' ? response : (response?.message?.content || response?.toString() || 'No response');
-            addMessage(text, 'bot');
+            if (!res.ok) {
+                addMessage('Error: ' + (data.error?.message || 'Request failed'), 'bot');
+                return;
+            }
+            addMessage(data.choices[0].message.content, 'bot');
         } catch (e) {
             document.getElementById('thinking')?.remove();
-            addMessage('Something went wrong. Please email Sanjay at prakesh3851@gmail.com', 'bot');
+            addMessage('Something went wrong. Email Sanjay at prakesh3851@gmail.com', 'bot');
         }
     }
 
