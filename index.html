@@ -385,6 +385,15 @@ Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to BA/Analytics internsh
         input.value = '';
 
         addMessage(msg, 'user');
+
+        // Check if user wants to connect
+        const connectWords = ['connect', 'contact', 'reach', 'talk to', 'message', 'hire', 'email', 'whatsapp', 'call'];
+        if (connectWords.some(w => msg.toLowerCase().includes(w))) {
+            addMessage('Here\'s how you can reach Sanjay directly:\n\n💬 <a href="https://wa.me/353899510121?text=Hi%20Sanjay!" target="_blank" style="color:var(--accent)">WhatsApp</a>\n🔗 <a href="https://www.linkedin.com/in/sanjay-prakash-a92291186/" target="_blank" style="color:var(--accent)">LinkedIn</a>\n📧 <a href="mailto:prakesh3851@gmail.com" style="color:var(--accent)">Email</a>', 'bot');
+            logChat(msg, '[Showed connection links]');
+            return;
+        }
+
         addMessage('Thinking...', 'bot', 'thinking');
 
         try {
