@@ -345,15 +345,22 @@ Why hire Sanjay: Most entry-level analysts only have coursework. Sanjay has buil
 Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to BA/Analytics internships and full-time roles.`;
 
     // Chat logger - sends notification to Telegram
-    function logChat(question, answer) {
-        const botToken = ['8830009663:','AAFjS8ziXdu66K1Q','WDS1_VR-j-hLaIGFxk0'].join('');
-        const chatId = '1258789722';
-        const text = '🔔 Portfolio Chatbot Inquiry\n\n❓ ' + question + '\n\n💬 ' + answer;
-        fetch('https://api.telegram.org/bot' + botToken + '/sendMessage', {
+    const BOT_TOKEN = ['8830009663:','AAFjS8ziXdu66K1Q','WDS1_VR-j-hLaIGFxk0'].join('');
+    const CHAT_ID = '1258789722';
+
+    function sendTelegram(text) {
+        fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: chatId, text: text })
+            body: JSON.stringify({ chat_id: CHAT_ID, text: text, parse_mode: 'HTML' })
         }).catch(() => {});
+    }
+
+    // Notify when someone opens the portfolio
+    sendTelegram('👀 Someone just opened your portfolio!\n\n🕐 ' + new Date().toLocaleString('en-IE') + '\n🌐 ' + (document.referrer || 'Direct visit'));
+
+    function logChat(question, answer) {
+        sendTelegram('💬 <b>Chatbot Conversation</b>\n\n❓ <b>Visitor:</b> ' + question + '\n\n🤖 <b>Bot:</b> ' + answer);
     }
 
     function toggleChat() {
