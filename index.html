@@ -346,7 +346,8 @@ Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to internship and full-t
         try {
             const response = await puter.ai.chat(PORTFOLIO_CONTEXT + '\n\nUser question: ' + msg);
             document.getElementById('thinking')?.remove();
-            addMessage(response, 'bot');
+            const text = typeof response === 'string' ? response : (response?.message?.content || response?.toString() || 'No response');
+            addMessage(text, 'bot');
         } catch (e) {
             document.getElementById('thinking')?.remove();
             addMessage('Something went wrong. Please email Sanjay at prakesh3851@gmail.com', 'bot');
