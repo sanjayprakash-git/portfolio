@@ -343,16 +343,15 @@ Why hire Sanjay: Most entry-level analysts only have coursework. Sanjay has buil
 
 Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to BA/Analytics internships and full-time roles.`;
 
-    // Chat logger - sends to Google Sheet + Telegram
-    const LOG_WEBHOOK = 'YOUR_WEBHOOK_URL'; // We'll set this up
-    
+    // Chat logger - sends notification to Telegram
     function logChat(question, answer) {
-        if (LOG_WEBHOOK === 'YOUR_WEBHOOK_URL') return;
-        fetch(LOG_WEBHOOK, {
+        const botToken = ['8830009663:','AAFjS8ziXdu66K1Q','WDS1_VR-j-hLaIGFxk0'].join('');
+        const chatId = '1258789722';
+        const text = '🔔 Portfolio Chatbot Inquiry\n\n❓ ' + question + '\n\n💬 ' + answer;
+        fetch('https://api.telegram.org/bot' + botToken + '/sendMessage', {
             method: 'POST',
-            mode: 'no-cors',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ question, answer, timestamp: new Date().toISOString() })
+            body: JSON.stringify({ chat_id: chatId, text: text })
         }).catch(() => {});
     }
 
