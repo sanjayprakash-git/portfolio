@@ -236,7 +236,7 @@
     </div>
 
     <script>
-    const GROQ_API_KEY = ['gsk','_hBs2Br15u1yqyA0','84z2sWGdyb3FYDya','vnVOWi8sXHXiMBaS','yLFdT'].join('');
+    const PROXY_URL = 'https://portfolio-proxy-two.vercel.app/api/chat';
 
     const SYSTEM_PROMPT = `You are a friendly, confident AI assistant on Sanjay Prakash Ravi's portfolio website. Your job is to make visitors interested in Sanjay and encourage them to reach out.
 
@@ -275,24 +275,12 @@ Why hire Sanjay: Most entry-level analysts only have coursework. Sanjay has buil
 
 Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to BA/Analytics internships and full-time roles.`;
 
-    // Chat logger - sends notification to Telegram
-    const BOT_TOKEN = ['8830009663:','AAFjS8ziXdu66K1Q','WDS1_VR-j-hLaIGFxk0'].join('');
-    const CHAT_ID = '1258789722';
-
-    function sendTelegram(text) {
-        fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: CHAT_ID, text: text, parse_mode: 'HTML' })
-        }).catch(() => {});
-    }
-
     // Notify when someone opens the portfolio
-    sendTelegram('👀 Someone just opened your portfolio!\n\n🕐 ' + new Date().toLocaleString('en-IE') + '\n🌐 ' + (document.referrer || 'Direct visit'));
-
-    function logChat(question, answer) {
-        sendTelegram('💬 <b>Chatbot Conversation</b>\n\n❓ <b>Visitor:</b> ' + question + '\n\n🤖 <b>Bot:</b> ' + answer);
-    }
+    fetch(PROXY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'notify', message: '👀 Someone just opened your portfolio!\n\n🕐 ' + new Date().toLocaleString('en-IE') + '\n🌐 ' + (document.referrer || 'Direct visit') })
+    }).catch(() => {});
 
     function toggleChat() {
         document.getElementById('chatbot').classList.toggle('chatbot-hidden');
@@ -310,26 +298,21 @@ Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to BA/Analytics internsh
         const connectWords = ['connect', 'contact', 'reach', 'talk to', 'message', 'hire', 'email', 'whatsapp', 'call'];
         if (connectWords.some(w => msg.toLowerCase().includes(w))) {
             addMessage('Here\'s how you can reach Sanjay directly:\n\n💬 <a href="https://wa.me/353899510121?text=Hi%20Sanjay!" target="_blank" style="color:var(--accent)">WhatsApp</a>\n🔗 <a href="https://www.linkedin.com/in/sanjay-prakash-a92291186/" target="_blank" style="color:var(--accent)">LinkedIn</a>\n📧 <a href="mailto:prakesh3851@gmail.com" style="color:var(--accent)">Email</a>', 'bot');
-            logChat(msg, '[Showed connection links]');
+            fetch(PROXY_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'notify', message: '💬 <b>Chatbot</b>\n❓ ' + msg + '\n🤖 [Showed connection links]' }) }).catch(() => {});
             return;
         }
 
         addMessage('Thinking...', 'bot', 'thinking');
 
         try {
-            const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            const res = await fetch(PROXY_URL, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + GROQ_API_KEY
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    model: 'llama-3.1-8b-instant',
-                    messages: [
+                    message: [
                         { role: 'system', content: SYSTEM_PROMPT },
                         { role: 'user', content: msg }
-                    ],
-                    max_tokens: 200
+                    ]
                 })
             });
             const data = await res.json();
@@ -339,7 +322,7 @@ Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to BA/Analytics internsh
                 return;
             }
             addMessage(data.choices[0].message.content, 'bot');
-            logChat(msg, data.choices[0].message.content);
+            fetch(PROXY_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'notify', message: '💬 <b>Chatbot</b>\n❓ ' + msg + '\n🤖 ' + data.choices[0].message.content }) }).catch(() => {});
         } catch (e) {
             document.getElementById('thinking')?.remove();
             addMessage('Something went wrong. Email Sanjay at prakesh3851@gmail.com', 'bot');
