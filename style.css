@@ -164,12 +164,13 @@ nav a:hover::after {
 }
 
 .hero-quote {
-    font-size: 1.1rem;
-    color: var(--text-dim);
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    margin-bottom: 3rem;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
     font-weight: 400;
+    letter-spacing: 0.2px;
+    margin-bottom: 3rem;
     animation: heroFade 0.8s ease 0.5s both;
 }
 
@@ -482,14 +483,14 @@ footer {
 }
 
 footer p:first-child {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
     max-width: 500px;
     margin: 0 auto 1.25rem;
-    font-size: 1.05rem;
+    font-size: 0.88rem;
     line-height: 1.9;
-    color: var(--text);
-    font-weight: 500;
+    color: var(--text-muted);
+    font-weight: 400;
     letter-spacing: 0.2px;
 }
 
