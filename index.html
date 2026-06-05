@@ -275,12 +275,7 @@ Why hire Sanjay: Most entry-level analysts only have coursework. Sanjay has buil
 
 Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to BA/Analytics internships and full-time roles.`;
 
-    // Notify when someone opens the portfolio
-    fetch(PROXY_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'notify', message: '👀 Someone just opened your portfolio!\n\n🕐 ' + new Date().toLocaleString('en-IE') + '\n🌐 ' + (document.referrer || 'Direct visit') })
-    }).catch(() => {});
+    // Visitor tracking handled by tracker script below
 
     function toggleChat() {
         document.getElementById('chatbot').classList.toggle('chatbot-hidden');
@@ -337,6 +332,70 @@ Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to BA/Analytics internsh
         document.getElementById('chat-messages').appendChild(div);
         document.getElementById('chat-messages').scrollTop = 99999;
     }
+    </script>
+
+    <!-- VISITOR TRACKING -->
+    <script>
+    (function() {
+        const TRACK_URL = 'https://portfolio-proxy-two.vercel.app/api/track';
+        const startTime = Date.now();
+        const sections = {};
+        const clicks = [];
+        let maxScroll = 0;
+        let sent = false;
+
+        // Track section visibility
+        const trackObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                const id = e.target.id || e.target.closest('section')?.id || 'hero';
+                if (e.isIntersecting) {
+                    sections[id] = sections[id] || { name: id, start: Date.now(), time: 0 };
+                    sections[id].start = Date.now();
+                } else if (sections[id]?.start) {
+                    sections[id].time += Math.round((Date.now() - sections[id].start) / 1000);
+                    sections[id].start = null;
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('section, .hero').forEach(el => trackObserver.observe(el));
+
+        // Track clicks on buttons/links
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a, button');
+            if (link && clicks.length < 10) {
+                const label = link.textContent.trim().slice(0, 30) || link.href?.split('/').pop() || 'button';
+                if (!clicks.includes(label)) clicks.push(label);
+            }
+        });
+
+        // Track scroll depth
+        document.addEventListener('scroll', () => {
+            const pct = Math.round((window.scrollY + window.innerHeight) / document.body.scrollHeight * 100);
+            if (pct > maxScroll) maxScroll = pct;
+        }, { passive: true });
+
+        // Send data on exit
+        function sendTrack() {
+            if (sent) return;
+            sent = true;
+            // Finalize active sections
+            Object.values(sections).forEach(s => {
+                if (s.start) { s.time += Math.round((Date.now() - s.start) / 1000); s.start = null; }
+            });
+            const data = {
+                sections: Object.values(sections).filter(s => s.time > 0).map(s => ({ name: s.name, time: s.time })),
+                clicks,
+                scroll: maxScroll,
+                duration: Math.round((Date.now() - startTime) / 1000),
+                referrer: document.referrer || null
+            };
+            navigator.sendBeacon(TRACK_URL, JSON.stringify(data));
+        }
+
+        document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') sendTrack(); });
+        window.addEventListener('beforeunload', sendTrack);
+    })();
     </script>
 
     <!--Start of Tawk.to Script-->
