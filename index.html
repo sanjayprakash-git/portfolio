@@ -257,6 +257,9 @@
     <script>
     const PROXY_URL = 'https://portfolio-proxy-two.vercel.app/api/chat';
 
+    // Notify on page open
+    fetch(PROXY_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'notify', message: '👀 Someone just opened your portfolio!\n\n🕐 ' + new Date().toLocaleString('en-IE') + '\n🌐 ' + (document.referrer || 'Direct visit') }) }).catch(() => {});
+
     const SYSTEM_PROMPT = `You are a friendly, confident AI assistant on Sanjay Prakash Ravi's portfolio website. Your job is to make visitors interested in Sanjay and encourage them to reach out.
 
 Rules:
