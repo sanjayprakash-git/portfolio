@@ -260,6 +260,8 @@
     const SYSTEM_PROMPT = `You are a friendly, confident AI assistant on Sanjay Prakash Ravi's portfolio website. Your job is to make visitors interested in Sanjay and encourage them to reach out.
 
 Rules:
+- NEVER use markdown formatting (no **, no *, no #, no bullet points with -). Use plain text only.
+- Use emojis and line breaks for structure instead of markdown
 - Be conversational, warm, and concise
 - For skill/tool questions, structure the answer with categories using line breaks like:
   📊 Data & Analytics: Python, SQL, Power BI, Tableau, Excel
@@ -346,6 +348,7 @@ Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to BA/Analytics internsh
     function addMessage(text, type, id) {
         const div = document.createElement('div');
         div.className = 'msg ' + type;
+        if (type === 'bot') text = text.replace(/\*\*(.*?)\*\*/g, '$1').replace(/\*(.*?)\*/g, '$1').replace(/^#+\s*/gm, '').replace(/^[-•]\s*/gm, '→ ');
         div.innerHTML = text.replace(/\n/g, '<br>');
         if (id) div.id = id;
         document.getElementById('chat-messages').appendChild(div);
