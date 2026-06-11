@@ -409,7 +409,7 @@ Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to BA/Analytics internsh
                 duration: Math.round((Date.now() - startTime) / 1000),
                 referrer: document.referrer || null
             };
-            navigator.sendBeacon(TRACK_URL, JSON.stringify(data));
+            navigator.sendBeacon(TRACK_URL, new Blob([JSON.stringify(data)], { type: 'application/json' }));
         }
 
         document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') sendTrack(); });
