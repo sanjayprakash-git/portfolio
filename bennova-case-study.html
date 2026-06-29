@@ -219,59 +219,178 @@ tr:nth-child(even) td { background: #fafafa; }
   <h2>As-Is Process Map — Current State</h2>
   <p>The following swim lane diagram maps the current stock management process across all actors. Steps highlighted in red indicate identified process gaps. Dashed red arrows indicate broken or workaround flows.</p>
   <div class="diagram-scroll">
-  <svg width="1200" height="580" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,Arial,sans-serif">
+  <svg width="1240" height="600" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,Arial,sans-serif">
     <defs>
       <marker id="a1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#555"/></marker>
       <marker id="a1r" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#c0625a"/></marker>
       <marker id="a1o" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#c8963c"/></marker>
     </defs>
     <!-- Pool border -->
-    <rect x="1" y="1" width="1198" height="578" rx="6" fill="none" stroke="#bbb" stroke-width="2"/>
-    <rect x="1" y="1" width="1198" height="32" rx="6" fill="#1a1a2e"/>
-    <text x="600" y="21" text-anchor="middle" fill="white" font-size="12" font-weight="700" letter-spacing="0.8">CLIENT ORGANISATION — STOCK MANAGEMENT AS-IS PROCESS</text>
-    <!-- Lanes -->
-    <rect x="1" y="33" width="1198" height="78" fill="#f7f9ff" stroke="#ddd" stroke-width="1"/>
+    <rect x="1" y="1" width="1238" height="598" rx="6" fill="none" stroke="#bbb" stroke-width="2"/>
+    <rect x="1" y="1" width="1238" height="32" rx="6" fill="#1a1a2e"/>
+    <text x="620" y="21" text-anchor="middle" fill="white" font-size="12" font-weight="700" letter-spacing="0.8">CLIENT ORGANISATION — STOCK MANAGEMENT AS-IS PROCESS</text>
+
+    <!-- Lane: CUSTOMER (y=33, h=78) -->
+    <rect x="1" y="33" width="1238" height="78" fill="#f7f9ff" stroke="#ddd" stroke-width="1"/>
     <rect x="1" y="33" width="80" height="78" fill="#374785"/>
     <text x="41" y="74" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,74)">CUSTOMER</text>
-    <rect x="1" y="111" width="1198" height="208" fill="#fafffe" stroke="#ddd" stroke-width="1"/>
-    <rect x="1" y="111" width="80" height="208" fill="#2d6a4f"/>
-    <text x="41" y="215" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,215)">STAFF</text>
-    <rect x="1" y="319" width="1198" height="100" fill="#f7f9ff" stroke="#ddd" stroke-width="1"/>
-    <rect x="1" y="319" width="80" height="100" fill="#1d3557"/>
-    <text x="41" y="369" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,369)">MANAGER</text>
-    <rect x="1" y="419" width="1198" height="78" fill="#fafafa" stroke="#ddd" stroke-width="1"/>
-    <rect x="1" y="419" width="80" height="78" fill="#6d4c41"/>
-    <text x="41" y="458" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,458)">SUPPLIER</text>
-    <rect x="1" y="497" width="1198" height="82" fill="#f9f7ff" stroke="#ddd" stroke-width="1"/>
-    <rect x="1" y="497" width="80" height="82" fill="#4a4a6a"/>
-    <text x="41" y="538" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,538)">END OF DAY</text>
-    <!-- CUSTOMER -->
+
+    <!-- Lane: STAFF (y=111, h=188) -->
+    <rect x="1" y="111" width="1238" height="188" fill="#fafffe" stroke="#ddd" stroke-width="1"/>
+    <rect x="1" y="111" width="80" height="188" fill="#2d6a4f"/>
+    <text x="41" y="205" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,205)">STAFF</text>
+
+    <!-- Lane: MANAGER (y=299, h=110) -->
+    <rect x="1" y="299" width="1238" height="110" fill="#f7f9ff" stroke="#ddd" stroke-width="1"/>
+    <rect x="1" y="299" width="80" height="110" fill="#1d3557"/>
+    <text x="41" y="354" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,354)">MANAGER</text>
+
+    <!-- Lane: SUPPLIER (y=409, h=78) -->
+    <rect x="1" y="409" width="1238" height="78" fill="#fafafa" stroke="#ddd" stroke-width="1"/>
+    <rect x="1" y="409" width="80" height="78" fill="#6d4c41"/>
+    <text x="41" y="448" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,448)">SUPPLIER</text>
+
+    <!-- Lane: END OF DAY (y=487, h=112) -->
+    <rect x="1" y="487" width="1238" height="112" fill="#f9f7ff" stroke="#ddd" stroke-width="1"/>
+    <rect x="1" y="487" width="80" height="112" fill="#4a4a6a"/>
+    <text x="41" y="543" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,543)">END OF DAY</text>
+
+    <!-- ==================== CUSTOMER LANE ==================== -->
+    <!-- START: Customer requests product -->
     <ellipse cx="140" cy="72" rx="48" ry="24" fill="#eaf4ea" stroke="#5a9c6e" stroke-width="1.5"/>
     <text x="140" y="69" text-anchor="middle" font-size="9" font-weight="600">Customer</text>
     <text x="140" y="80" text-anchor="middle" font-size="9" font-weight="600">requests product</text>
-    <line x1="188" y1="72" x2="210" y2="72" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
-    <rect x="210" y="52" width="115" height="40" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
-    <text x="267" y="69" text-anchor="middle" font-size="9">Approaches counter</text>
-    <text x="267" y="81" text-anchor="middle" font-size="9">or browsing</text>
-    <!-- STAFF YES PATH -->
-    <rect x="95" y="130" width="115" height="40" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
-    <text x="152" y="147" text-anchor="middle" font-size="9">Staff scans</text>
-    <text x="152" y="159" text-anchor="middle" font-size="9">product barcode</text>
-    <line x1="210" y1="150" x2="238" y2="150" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
-    <polygon points="268,130 318,150 268,170 218,150" fill="#fef9e7" stroke="#c8963c" stroke-width="1.5"/>
-    <text x="268" y="147" text-anchor="middle" font-size="8" font-weight="600">Product in</text>
-    <text x="268" y="158" text-anchor="middle" font-size="8" font-weight="600">system?</text>
-    <line x1="318" y1="150" x2="348" y2="150" stroke="#2d6a4f" stroke-width="1.5" marker-end="url(#a1)"/>
-    <text x="332" y="144" text-anchor="middle" font-size="8" fill="#2d6a4f" font-weight="600">YES</text>
-    <rect x="348" y="130" width="115" height="40" rx="4" fill="#f0eaf8" stroke="#8a6ab5" stroke-width="1.5"/>
-    <text x="405" y="147" text-anchor="middle" font-size="9">Process sale in</text>
-    <text x="405" y="159" text-anchor="middle" font-size="9">Sale Register</text>
-270
+    <!-- Approaches counter -->
+    <line x1="188" y1="72" x2="215" y2="72" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+    <rect x="215" y="52" width="110" height="40" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+    <text x="270" y="69" text-anchor="middle" font-size="9">Approaches counter</text>
+    <text x="270" y="81" text-anchor="middle" font-size="9">or browsing</text>
 
-... [OUTPUT TRUNCATED - 7659 chars omitted out of 57659 total] ...
+    <!-- ==================== STAFF LANE ==================== -->
+    <!-- Staff scans barcode -->
+    <rect x="95" y="125" width="110" height="40" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+    <text x="150" y="142" text-anchor="middle" font-size="9">Staff scans</text>
+    <text x="150" y="154" text-anchor="middle" font-size="9">product barcode</text>
+    <!-- Arrow: Customer → Staff scan -->
+    <line x1="270" y1="92" x2="270" y2="118" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+    <line x1="270" y1="118" x2="210" y2="118" stroke="#555" stroke-width="1.5"/>
+    <line x1="210" y1="118" x2="210" y2="125" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
 
-1" stroke="#555" stroke-width="1" stroke-dasharray="3" marker-end="url(#a1)"/>
-    <line x1="817" y1="419" x2="817" y2="391" stroke="#555" stroke-width="1" stroke-dasharray="3" marker-end="url(#a1)"/>
+    <!-- Arrow: scan → decision -->
+    <line x1="205" y1="145" x2="233" y2="145" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+
+    <!-- Decision: Product in system? -->
+    <polygon points="268,125 318,145 268,165 218,145" fill="#fef9e7" stroke="#c8963c" stroke-width="1.5"/>
+    <text x="268" y="142" text-anchor="middle" font-size="8" font-weight="600">Product in</text>
+    <text x="268" y="153" text-anchor="middle" font-size="8" font-weight="600">system?</text>
+
+    <!-- YES path → Process sale -->
+    <line x1="318" y1="145" x2="348" y2="145" stroke="#2d6a4f" stroke-width="1.5" marker-end="url(#a1)"/>
+    <text x="332" y="139" text-anchor="middle" font-size="8" fill="#2d6a4f" font-weight="600">YES</text>
+    <rect x="348" y="125" width="110" height="40" rx="4" fill="#f0eaf8" stroke="#8a6ab5" stroke-width="1.5"/>
+    <text x="403" y="142" text-anchor="middle" font-size="9">Process sale in</text>
+    <text x="403" y="154" text-anchor="middle" font-size="9">Sale Register</text>
+
+    <!-- Stock count reduces -->
+    <line x1="458" y1="145" x2="488" y2="145" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+    <rect x="488" y="125" width="110" height="40" rx="4" fill="#f0eaf8" stroke="#8a6ab5" stroke-width="1.5"/>
+    <text x="543" y="142" text-anchor="middle" font-size="9">Stock count</text>
+    <text x="543" y="154" text-anchor="middle" font-size="9">reduces by 1</text>
+
+    <!-- Stock hits zero - GAP-3 -->
+    <line x1="598" y1="145" x2="628" y2="145" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+    <rect x="628" y="122" width="120" height="46" rx="4" fill="#fdecea" stroke="#c0625a" stroke-width="1.5"/>
+    <text x="688" y="139" text-anchor="middle" font-size="9">Stock reaches zero</text>
+    <text x="688" y="151" text-anchor="middle" font-size="9">or negative (red)</text>
+    <text x="688" y="162" text-anchor="middle" font-size="8" fill="#c0625a" font-weight="700">No alert — GAP-3</text>
+
+    <!-- NO path → Manual search GAP-1 -->
+    <line x1="268" y1="165" x2="268" y2="195" stroke="#c0625a" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a1r)"/>
+    <text x="278" y="183" text-anchor="start" font-size="8" fill="#c0625a" font-weight="600">NO</text>
+    <rect x="215" y="195" width="120" height="46" rx="4" fill="#fdecea" stroke="#c0625a" stroke-width="1.5"/>
+    <text x="275" y="212" text-anchor="middle" font-size="9">Staff manually</text>
+    <text x="275" y="224" text-anchor="middle" font-size="9">searches product name</text>
+    <text x="275" y="235" text-anchor="middle" font-size="8" fill="#c0625a" font-weight="700">GAP-1</text>
+
+    <!-- GAP-1 result -->
+    <line x1="335" y1="218" x2="363" y2="218" stroke="#c0625a" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a1r)"/>
+    <rect x="363" y="195" width="120" height="46" rx="4" fill="#fdecea" stroke="#c0625a" stroke-width="1.5"/>
+    <text x="423" y="212" text-anchor="middle" font-size="9">Incorrect product</text>
+    <text x="423" y="224" text-anchor="middle" font-size="9">billed — inventory</text>
+    <text x="423" y="235" text-anchor="middle" font-size="8" fill="#c0625a" font-weight="700">miscounted GAP-1</text>
+
+    <!-- ==================== MANAGER LANE ==================== -->
+    <!-- Manually notices zero/negative stock -->
+    <rect x="628" y="313" width="120" height="46" rx="4" fill="#fdecea" stroke="#c0625a" stroke-width="1.5"/>
+    <text x="688" y="330" text-anchor="middle" font-size="9">Manually notices zero/</text>
+    <text x="688" y="342" text-anchor="middle" font-size="9">negative stock</text>
+    <text x="688" y="353" text-anchor="middle" font-size="8" fill="#c0625a" font-weight="700">No alert — GAP-3</text>
+    <!-- Arrow from GAP-3 in staff lane down to manager -->
+    <line x1="688" y1="168" x2="688" y2="313" stroke="#c0625a" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a1r)"/>
+
+    <!-- Reviews sales in system -->
+    <line x1="748" y1="336" x2="778" y2="336" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+    <rect x="778" y="313" width="110" height="46" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+    <text x="833" y="330" text-anchor="middle" font-size="9">Reviews sales activity</text>
+    <text x="833" y="342" text-anchor="middle" font-size="9">and demand in system</text>
+
+    <!-- Determines reorder qty -->
+    <line x1="888" y1="336" x2="918" y2="336" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+    <rect x="918" y="313" width="110" height="46" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+    <text x="973" y="330" text-anchor="middle" font-size="9">Determines reorder</text>
+    <text x="973" y="342" text-anchor="middle" font-size="9">quantity</text>
+
+    <!-- Orders via WhatsApp - GAP-2 -->
+    <line x1="1028" y1="336" x2="1058" y2="336" stroke="#c0625a" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a1r)"/>
+    <rect x="1058" y="313" width="120" height="46" rx="4" fill="#fdecea" stroke="#c0625a" stroke-width="1.5"/>
+    <text x="1118" y="330" text-anchor="middle" font-size="9">Orders via WhatsApp</text>
+    <text x="1118" y="342" text-anchor="middle" font-size="9">or call — no system</text>
+    <text x="1118" y="353" text-anchor="middle" font-size="8" fill="#c0625a" font-weight="700">record — GAP-2</text>
+
+    <!-- Delivery arrives / PO after - GAP-5 -->
+    <line x1="1118" y1="359" x2="1118" y2="405" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+    <rect x="1058" y="405" width="120" height="46" rx="4" fill="#fef3e2" stroke="#c8963c" stroke-width="1.5"/>
+    <text x="1118" y="422" text-anchor="middle" font-size="9">Delivery arrives —</text>
+    <text x="1118" y="434" text-anchor="middle" font-size="9">manually verified</text>
+
+    <!-- PO created AFTER - GAP-5 arrow back to manager -->
+    <line x1="1118" y1="451" x2="1118" y2="465" stroke="#c0625a" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a1r)"/>
+    <rect x="918" y="465" width="200" height="46" rx="4" fill="#fdecea" stroke="#c0625a" stroke-width="1.5"/>
+    <text x="1018" y="482" text-anchor="middle" font-size="9">PO created AFTER delivery —</text>
+    <text x="1018" y="494" text-anchor="middle" font-size="9">inventory updated</text>
+    <text x="1018" y="505" text-anchor="middle" font-size="8" fill="#c0625a" font-weight="700">GAP-5</text>
+
+    <!-- ==================== SUPPLIER LANE ==================== -->
+    <!-- Receives order via WhatsApp -->
+    <line x1="1118" y1="409" x2="1118" y2="409" stroke="#555" stroke-width="0"/>
+    <rect x="1058" y="418" width="120" height="40" rx="4" fill="#fafafa" stroke="#aaa" stroke-width="1.5"/>
+    <!-- Already shown in supplier lane via the delivery arrives box -->
+
+    <!-- ==================== END OF DAY LANE ==================== -->
+    <!-- Manager runs EOD -->
+    <rect x="95" y="503" width="110" height="40" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+    <text x="150" y="520" text-anchor="middle" font-size="9">Manager runs</text>
+    <text x="150" y="532" text-anchor="middle" font-size="9">EOD cash report</text>
+
+    <!-- Cash discrepancy -->
+    <line x1="205" y1="523" x2="235" y2="523" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+    <rect x="235" y="500" width="120" height="46" rx="4" fill="#fef3e2" stroke="#c8963c" stroke-width="1.5"/>
+    <text x="295" y="517" text-anchor="middle" font-size="9">Cash discrepancy found</text>
+    <text x="295" y="529" text-anchor="middle" font-size="9">— unrecorded sales</text>
+
+    <!-- Products manually added GAP-4 -->
+    <line x1="355" y1="523" x2="385" y2="523" stroke="#c0625a" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a1r)"/>
+    <rect x="385" y="500" width="120" height="46" rx="4" fill="#fdecea" stroke="#c0625a" stroke-width="1.5"/>
+    <text x="445" y="517" text-anchor="middle" font-size="9">Products manually added</text>
+    <text x="445" y="529" text-anchor="middle" font-size="9">to resolve discrepancy</text>
+    <text x="445" y="540" text-anchor="middle" font-size="8" fill="#c0625a" font-weight="700">GAP-4</text>
+
+    <!-- Inventory count inaccurate GAP-4 -->
+    <line x1="505" y1="523" x2="535" y2="523" stroke="#c0625a" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a1r)"/>
+    <rect x="535" y="500" width="130" height="46" rx="4" fill="#fdecea" stroke="#c0625a" stroke-width="1.5"/>
+    <text x="600" y="517" text-anchor="middle" font-size="9">Inventory count inaccurate</text>
+    <text x="600" y="529" text-anchor="middle" font-size="9">— actual stock unknown</text>
+    <text x="600" y="540" text-anchor="middle" font-size="8" fill="#c0625a" font-weight="700">GAP-4</text>
   </svg>
   </div>
   <div class="legend">
