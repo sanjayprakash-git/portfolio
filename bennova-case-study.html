@@ -1,0 +1,694 @@
+1|1|1|<!DOCTYPE html>
+2|2|2|<html lang="en">
+3|3|3|<head>
+4|4|4|<meta charset="utf-8">
+5|5|5|<title>Dublin Retail SME — BA Case Study: Full Documentation</title>
+6|6|6|<style>
+7|7|7|* { box-sizing: border-box; margin: 0; padding: 0; }
+8|8|8|body { font-family: "Segoe UI", Arial, sans-serif; background: #f0f2f5; padding: 30px; color: #1a1a1a; }
+9|9|9|.page { max-width: 1100px; margin: 0 auto; }
+10|10|10|
+11|11|11|/* HEADER */
+12|12|12|.header { background: #1a1a2e; color: white; border-radius: 10px; padding: 30px 38px; margin-bottom: 24px; }
+13|13|13|.header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+14|14|14|.header .sub { font-size: 13px; color: #aac4ff; margin-bottom: 14px; }
+15|15|15|.meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 16px; }
+16|16|16|.meta-item { background: rgba(255,255,255,0.07); border-radius: 6px; padding: 10px 14px; }
+17|17|17|.meta-item .label { font-size: 10px; color: #aac4ff; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 3px; }
+18|18|18|.meta-item .value { font-size: 12px; color: white; font-weight: 600; }
+19|19|19|
+20|20|20|/* DOC CONTROL */
+21|21|21|.doc-control { background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); padding: 22px 28px; margin-bottom: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+22|22|22|.toc ol { padding-left: 18px; }
+23|23|23|.toc li { font-size: 12px; color: #444; line-height: 2; }
+24|24|24|.toc li a { color: #1d3557; text-decoration: none; }
+25|25|25|.toc li a:hover { text-decoration: underline; }
+26|26|26|.version-table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+27|27|27|.version-table th { background: #1a1a2e; color: white; padding: 7px 10px; text-align: left; font-size: 10px; letter-spacing: 0.3px; }
+28|28|28|.version-table td { padding: 7px 10px; border-bottom: 1px solid #f0f0f0; }
+29|29|29|
+30|30|30|/* SECTION CARDS */
+31|31|31|.card { background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); padding: 26px 30px; margin-bottom: 22px; }
+32|32|32|.section-label { font-size: 10px; font-weight: 700; color: #7a9cc8; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+33|33|33|.card h2 { font-size: 17px; font-weight: 700; color: #1a1a2e; padding-bottom: 10px; border-bottom: 2px solid #e8eaf6; margin-bottom: 18px; }
+34|34|34|.card h3 { font-size: 13px; font-weight: 700; color: #1a1a2e; margin: 18px 0 10px; }
+35|35|35|p { font-size: 12.5px; line-height: 1.85; color: #444; margin-bottom: 10px; }
+36|36|36|p:last-child { margin-bottom: 0; }
+37|37|37|
+38|38|38|/* CALLOUTS */
+39|39|39|.callout { border-left: 4px solid #7a9cc8; background: #eaf0fb; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 14px 0; font-size: 12.5px; line-height: 1.7; color: #333; }
+40|40|40|.callout.green  { border-left-color: #2d6a4f; background: #eaf4ea; }
+41|41|41|.callout.amber  { border-left-color: #c8963c; background: #fef3e2; }
+42|42|42|.callout.red    { border-left-color: #c0625a; background: #fdecea; }
+43|43|43|.callout strong { display: block; margin-bottom: 4px; }
+44|44|44|
+45|45|45|/* TABLES */
+46|46|46|table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 8px 0 16px; }
+47|47|47|th { background: #1a1a2e; color: white; padding: 9px 12px; text-align: left; font-size: 11px; letter-spacing: 0.3px; }
+48|48|48|td { padding: 9px 12px; border-bottom: 1px solid #f0f0f0; vertical-align: top; line-height: 1.6; }
+49|49|49|tr:last-child td { border-bottom: none; }
+50|50|50|tr:nth-child(even) td { background: #fafafa; }
+51|51|51|.total-row td { font-weight: 700; background: #eef2ff !important; border-top: 2px solid #1a1a2e; }
+52|52|52|.num { text-align: right; font-variant-numeric: tabular-nums; }
+53|53|53|.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700; white-space: nowrap; }
+54|54|54|.badge.crit { background: #fdecea; color: #c0625a; }
+55|55|55|.badge.high { background: #fef3e2; color: #c8963c; }
+56|56|56|.badge.grn  { background: #eaf4ea; color: #2d6a4f; }
+57|57|57|.badge.blue { background: #eaf0fb; color: #1d3557; }
+58|58|58|.badge.med  { background: #f3eaff; color: #6a3d9a; }
+59|59|59|.req-id { font-weight: 700; color: #1d3557; white-space: nowrap; }
+60|60|60|
+61|61|61|/* KPI ROW */
+62|62|62|.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; }
+63|63|63|.kpi { background: #f7f9ff; border: 1px solid #e0e6f0; border-radius: 8px; padding: 16px; text-align: center; }
+64|64|64|.kpi .val { font-size: 24px; font-weight: 700; color: #1a1a2e; line-height: 1.2; }
+65|65|65|.kpi .lbl { font-size: 10px; color: #666; margin-top: 5px; line-height: 1.4; }
+66|66|66|.kpi.red .val { color: #c0625a; }
+67|67|67|.kpi.grn .val { color: #2d6a4f; }
+68|68|68|.kpi.amb .val { color: #c8963c; }
+69|69|69|
+70|70|70|/* DIAGRAM */
+71|71|71|.diagram-scroll { overflow-x: auto; padding-bottom: 8px; }
+72|72|72|.legend { display: flex; gap: 16px; flex-wrap: wrap; padding: 12px 0 4px; }
+73|73|73|.li { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #555; }
+74|74|74|.sw { width: 18px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+75|75|75|
+76|76|76|/* TWO COL */
+77|77|77|.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+78|78|78|
+79|79|79|/* FOOTER */
+80|80|80|.footer { text-align: center; font-size: 11px; color: #aaa; margin-top: 20px; padding-bottom: 12px; border-top: 1px solid #e8eaf6; padding-top: 16px; }
+81|81|81|.confidential { background: #fef3e2; border: 1px solid #c8963c; border-radius: 6px; padding: 8px 14px; font-size: 11px; color: #c8963c; text-align: center; margin-bottom: 20px; font-weight: 600; letter-spacing: 0.3px; }
+82|82|82|
+83|83|83|@media print {
+84|84|84|  body { background: white; padding: 10px; }
+85|85|85|  .card { box-shadow: none; border: 1px solid #ddd; }
+86|86|86|}
+87|87|87|</style>
+88|88|88|</head>
+89|89|89|<body>
+90|90|90|<div class="page">
+91|91|91|
+92|92|92|<!-- HEADER -->
+93|93|93|<div class="header">
+94|94|94|  <div class="section-label" style="color:#aac4ff;">BUSINESS ANALYSIS CASE STUDY</div>
+95|95|95|  <h1>Stock Management Process Improvement</h1>
+96|96|96|  <div class="sub">As-Is Assessment · Gap Analysis · To-Be Design · Requirements Specification · Business Case</div>
+97|97|97|  <div class="meta-grid">
+98|98|98|    <div class="meta-item"><div class="label">Organisation</div><div class="value">Dublin-Based Retail &amp; E-Commerce SME</div></div>
+99|99|99|    <div class="meta-item"><div class="label">Analyst</div><div class="value">Sanjay Prakash Ravi</div></div>
+100|100|100|    <div class="meta-item"><div class="label">Date</div><div class="value">June 2026</div></div>
+101|101|101|    <div class="meta-item"><div class="label">Version</div><div class="value">v3 — Final</div></div>
+102|102|102|  </div>
+103|103|103|</div>
+104|104|104|
+105|105|105|<!-- CONFIDENTIALITY -->
+106|106|106|<div class="confidential">PORTFOLIO DOCUMENT — Company name anonymised. All data based on real operational analysis.</div>
+107|107|107|
+108|108|108|<!-- DOCUMENT CONTROL + TOC -->
+109|109|109|<div class="doc-control">
+110|110|110|  <div>
+111|111|111|    <div class="section-label">Document Control</div>
+112|112|112|    <table class="version-table">
+113|113|113|      <thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Description</th></tr></thead>
+114|114|114|      <tbody>
+<tr><td>v1</td><td>June 2026</td><td>S. Prakash Ravi</td><td>Initial draft — As-Is discovery</td></tr>
+<tr><td>v2</td><td>June 2026</td><td>S. Prakash Ravi</td><td>Gap analysis, To-Be, Requirements &amp; Business Case added</td></tr>
+<tr><td>v3</td><td>June 2026</td><td>S. Prakash Ravi</td><td>Final — Risks, Next Steps, GAP-6 added. Approved for portfolio</td></tr>
+119|119|119|      </tbody>
+120|120|120|    </table>
+121|121|121|  </div>
+122|122|122|  <div class="toc">
+123|123|123|    <div class="section-label">Contents</div>
+124|124|124|    <ol>
+125|125|125|      <li><a href="#exec">Executive Summary</a></li>
+126|126|126|      <li><a href="#gaps">Identified Pain Points &amp; Gap Analysis</a></li>
+127|127|127|      <li><a href="#asis">As-Is Process Map — Current State</a></li>
+128|128|128|      <li><a href="#tobe">To-Be Process Map — Target State</a></li>
+129|129|129|      <li><a href="#reqs">Business Requirements Specification</a></li>
+130|130|130|      <li><a href="#bizcase">Business Case &amp; ROI</a></li>
+131|131|131|      <li><a href="#risks">Risks &amp; Assumptions</a></li>
+132|132|132|      <li><a href="#nextsteps">Recommended Next Steps</a></li>
+133|133|133|    </ol>
+134|134|134|  </div>
+135|135|135|</div>
+136|136|136|
+137|137|<!-- SECTION 1: EXECUTIVE SUMMARY -->
+138|138|<div class="card" id="exec">
+139|139|  <div class="section-label">Section 1</div>
+140|140|  <h2>Executive Summary</h2>
+141|141|  <p>This document presents a full business analysis engagement conducted at a Dublin-based retail and e-commerce SME operating a proprietary POS and inventory management system. The business sells accessories, gadgets, phones, and laptops, and provides phone and laptop repair services — managing over 1,000 active SKUs including retail stock and repair parts.</p>
+142|142|  <p>A process review of the end-to-end stock management workflow identified <strong>six critical process gaps</strong> causing systematic inventory inaccuracies, unrecorded sales, phantom stock, and unreliable cost-of-goods data across the business.</p>
+143|143|
+144|144|  <div class="callout amber">
+145|145|    <strong>Core Finding</strong>
+146|146|    The current process relies on manual intervention at four critical control points — stock monitoring, reorder placement, end-of-day reconciliation, and refurbishment job costing — none of which are integrated with the system. This creates a compounding data quality problem where inventory counts cannot be trusted at any point, reorder decisions are made on incomplete information, and cash discrepancies are resolved by patching inventory rather than correcting the root cause.
+147|147|  </div>
+148|148|
+149|149|  <div class="callout green">
+150|150|    <strong>Recommendation</strong>
+151|151|    Proceed with targeted process and configuration fixes within the existing system before evaluating a platform migration. Four of the six gaps can be resolved through system configuration, process enforcement, and staff training at a total cost of approximately €150. The two remaining gaps (automated alerts and Bill of Materials for refurb jobs) require system capability assessment — if unsupported, RepairDesk (€75/month) is the recommended platform given its repair + retail + inventory combination.
+152|152|  </div>
+153|153|
+154|154|  <div class="kpi-row" style="margin-top:20px;">
+155|155|    <div class="kpi red"><div class="val">6</div><div class="lbl">Critical process gaps identified across stock management workflow</div></div>
+156|156|    <div class="kpi red"><div class="val">€7,095</div><div class="lbl">Quantifiable annual benefit from recommended fixes</div></div>
+157|157|    <div class="kpi amb"><div class="val">1,000+</div><div class="lbl">SKUs with no reliable real-time inventory count at any given moment</div></div>
+158|158|    <div class="kpi grn"><div class="val">&lt;1 mo</div><div class="lbl">Estimated payback period for all recommended improvements</div></div>
+159|159|  </div>
+160|160|</div>
+161|161|
+162|162|<!-- SECTION 2: GAP ANALYSIS -->
+163|163|<div class="card" id="gaps">
+164|164|  <div class="section-label">Section 2</div>
+165|165|  <h2>Identified Pain Points &amp; Gap Analysis</h2>
+166|166|  <table>
+167|167|    <thead>
+168|168|      <tr><th width="28">#</th><th width="70">Gap Ref</th><th>Pain Point</th><th>Root Cause</th><th>Business Impact</th><th width="80">Priority</th></tr>
+169|169|    </thead>
+170|170|    <tbody>
+171|171|      <tr>
+172|172|        <td>1</td><td><strong>GAP-1</strong></td>
+173|173|        <td>Manual barcode fallback causes billing errors</td>
+174|174|        <td>System allows staff to search by product name when barcode is not found — similar products are selected incorrectly</td>
+175|175|        <td>Inventory counts unreliable for multiple SKUs simultaneously. One product overstated, another understated.</td>
+176|176|        <td><span class="badge crit">CRITICAL</span></td>
+177|177|      </tr>
+178|178|      <tr>
+179|179|        <td>2</td><td><strong>GAP-2</strong></td>
+180|180|        <td>Reorder process conducted entirely outside the system</td>
+181|181|        <td>No purchase order workflow exists — all orders placed via WhatsApp or phone call with no system record</td>
+182|182|        <td>No audit trail, no lead time tracking, no expected delivery visibility. Manager cannot confirm what was ordered or when.</td>
+183|183|        <td><span class="badge crit">CRITICAL</span></td>
+184|184|      </tr>
+185|185|      <tr>
+186|186|        <td>3</td><td><strong>GAP-3</strong></td>
+187|187|        <td>No automated low stock notification</td>
+188|188|        <td>System only shows a negative count after stock is fully exhausted — no proactive threshold alert exists</td>
+189|189|        <td>Stock-outs occur before reorder is triggered. Manager must manually notice red negative figures to act.</td>
+190|190|        <td><span class="badge crit">CRITICAL</span></td>
+191|191|      </tr>
+192|192|      <tr>
+193|193|        <td>4</td><td><strong>GAP-4</strong></td>
+194|194|        <td>EOD reconciliation corrupts inventory data</td>
+195|195|        <td>Unrecorded sales are resolved by manually adding stock to balance the cash register — not by recording the actual transaction</td>
+196|196|        <td>Inventory count artificially inflated. Actual stock position unknown. Financial reporting inaccurate.</td>
+197|197|        <td><span class="badge crit">CRITICAL</span></td>
+198|198|      </tr>
+199|199|      <tr>
+200|200|        <td>5</td><td><strong>GAP-5</strong></td>
+201|201|        <td>Purchase Order raised after delivery, not before</td>
+202|202|        <td>PO created retrospectively in the system once goods physically arrive — no pre-delivery PO reference exists</td>
+203|203|        <td>Receiving team cannot verify delivery against an order. No basis for supplier dispute or short-delivery claim.</td>
+204|204|        <td><span class="badge high">HIGH</span></td>
+205|205|      </tr>
+206|206|      <tr>
+207|207|        <td>6</td><td><strong>GAP-6</strong></td>
+208|208|        <td>Refurbishment parts not deducted from inventory</td>
+209|209|        <td>Parts pulled from stock for trade-in/refurb jobs are never recorded — no job ticket links parts consumed to inventory</td>
+210|210|        <td>~€3,360/year in parts consumed with no system trace. System shows phantom stock. Technicians plan jobs on false availability data. Cost-of-goods for resold devices is inaccurate.</td>
+211|211|        <td><span class="badge crit">CRITICAL</span></td>
+212|212|      </tr>
+213|213|    </tbody>
+214|214|  </table>
+215|215|</div>
+216|216|
+217|<!-- SECTION 3: AS-IS PROCESS MAP -->
+218|<div class="card" id="asis">
+219|  <div class="section-label">Section 3</div>
+220|  <h2>As-Is Process Map — Current State</h2>
+221|  <p>The following swim lane diagram maps the current stock management process across all actors. Steps highlighted in red indicate identified process gaps. Dashed red arrows indicate broken or workaround flows.</p>
+222|  <div class="diagram-scroll">
+223|  <svg width="1200" height="580" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,Arial,sans-serif">
+224|    <defs>
+225|      <marker id="a1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#555"/></marker>
+226|      <marker id="a1r" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#c0625a"/></marker>
+227|      <marker id="a1o" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#c8963c"/></marker>
+228|    </defs>
+229|    <!-- Pool border -->
+230|    <rect x="1" y="1" width="1198" height="578" rx="6" fill="none" stroke="#bbb" stroke-width="2"/>
+231|    <rect x="1" y="1" width="1198" height="32" rx="6" fill="#1a1a2e"/>
+232|    <text x="600" y="21" text-anchor="middle" fill="white" font-size="12" font-weight="700" letter-spacing="0.8">CLIENT ORGANISATION — STOCK MANAGEMENT AS-IS PROCESS</text>
+233|    <!-- Lanes -->
+234|    <rect x="1" y="33" width="1198" height="78" fill="#f7f9ff" stroke="#ddd" stroke-width="1"/>
+235|    <rect x="1" y="33" width="80" height="78" fill="#374785"/>
+236|    <text x="41" y="74" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,74)">CUSTOMER</text>
+237|    <rect x="1" y="111" width="1198" height="208" fill="#fafffe" stroke="#ddd" stroke-width="1"/>
+238|    <rect x="1" y="111" width="80" height="208" fill="#2d6a4f"/>
+239|    <text x="41" y="215" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,215)">STAFF</text>
+240|    <rect x="1" y="319" width="1198" height="100" fill="#f7f9ff" stroke="#ddd" stroke-width="1"/>
+241|    <rect x="1" y="319" width="80" height="100" fill="#1d3557"/>
+242|    <text x="41" y="369" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,369)">MANAGER</text>
+243|    <rect x="1" y="419" width="1198" height="78" fill="#fafafa" stroke="#ddd" stroke-width="1"/>
+244|    <rect x="1" y="419" width="80" height="78" fill="#6d4c41"/>
+245|    <text x="41" y="458" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,458)">SUPPLIER</text>
+246|    <rect x="1" y="497" width="1198" height="82" fill="#f9f7ff" stroke="#ddd" stroke-width="1"/>
+247|    <rect x="1" y="497" width="80" height="82" fill="#4a4a6a"/>
+248|    <text x="41" y="538" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,538)">END OF DAY</text>
+249|    <!-- CUSTOMER -->
+250|    <ellipse cx="140" cy="72" rx="48" ry="24" fill="#eaf4ea" stroke="#5a9c6e" stroke-width="1.5"/>
+251|    <text x="140" y="69" text-anchor="middle" font-size="9" font-weight="600">Customer</text>
+252|    <text x="140" y="80" text-anchor="middle" font-size="9" font-weight="600">requests product</text>
+253|    <line x1="188" y1="72" x2="210" y2="72" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+254|    <rect x="210" y="52" width="115" height="40" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+255|    <text x="267" y="69" text-anchor="middle" font-size="9">Approaches counter</text>
+256|    <text x="267" y="81" text-anchor="middle" font-size="9">or browsing</text>
+257|    <!-- STAFF YES PATH -->
+258|    <rect x="95" y="130" width="115" height="40" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+259|    <text x="152" y="147" text-anchor="middle" font-size="9">Staff scans</text>
+260|    <text x="152" y="159" text-anchor="middle" font-size="9">product barcode</text>
+261|    <line x1="210" y1="150" x2="238" y2="150" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+262|    <polygon points="268,130 318,150 268,170 218,150" fill="#fef9e7" stroke="#c8963c" stroke-width="1.5"/>
+263|    <text x="268" y="147" text-anchor="middle" font-size="8" font-weight="600">Product in</text>
+264|    <text x="268" y="158" text-anchor="middle" font-size="8" font-weight="600">system?</text>
+265|    <line x1="318" y1="150" x2="348" y2="150" stroke="#2d6a4f" stroke-width="1.5" marker-end="url(#a1)"/>
+266|    <text x="332" y="144" text-anchor="middle" font-size="8" fill="#2d6a4f" font-weight="600">YES</text>
+267|    <rect x="348" y="130" width="115" height="40" rx="4" fill="#f0eaf8" stroke="#8a6ab5" stroke-width="1.5"/>
+268|    <text x="405" y="147" text-anchor="middle" font-size="9">Process sale in</text>
+269|    <text x="405" y="159" text-anchor="middle" font-size="9">Sale Register</text>
+270|    <line x1="463" y1="150" x2="493" y2="150" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+271|    <rect x="493" y="130" width="115" height="40" rx="4" fill="#f0eaf8" stroke="#8a6ab5" stroke-width="1.5"/>
+272|    <text x="550" y="147" text-anchor="middle" font-size="9">Stock count</text>
+273|    <text x="550" y="159" text-anchor="middle" font-size="9">reduces by 1</text>
+274|    <line x1="608" y1="150" x2="638" y2="150" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+275|    <rect x="638" y="128" width="130" height="44" rx="4" fill="#fef3e2" stroke="#c8963c" stroke-width="1.5"/>
+276|    <text x="703" y="145" text-anchor="middle" font-size="9">Stock reaches zero</text>
+277|    <text x="703" y="157" text-anchor="middle" font-size="9">or negative (red)</text>
+278|    <text x="703" y="168" text-anchor="middle" font-size="8" fill="#c8963c" font-weight="600">No alert — GAP-3</text>
+279|    <!-- NO PATH -->
+280|    <line x1="268" y1="170" x2="268" y2="228" stroke="#c0625a" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#a1r)"/>
+281|    <text x="275" y="204" font-size="8" fill="#c0625a" font-weight="600">NO</text>
+282|    <rect x="210" y="228" width="125" height="50" rx="4" fill="#fdecea" stroke="#c0625a" stroke-width="1.5"/>
+283|    <text x="272" y="245" text-anchor="middle" font-size="9">Staff manually</text>
+284|    <text x="272" y="257" text-anchor="middle" font-size="9">searches product name</text>
+285|    <text x="272" y="270" text-anchor="middle" font-size="8" fill="#c0625a" font-weight="600">GAP-1</text>
+286|    <line x1="335" y1="253" x2="362" y2="253" stroke="#c0625a" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#a1r)"/>
+287|    <rect x="362" y="228" width="125" height="50" rx="4" fill="#fdecea" stroke="#c0625a" stroke-width="1.5"/>
+288|    <text x="424" y="245" text-anchor="middle" font-size="9">Incorrect product</text>
+289|    <text x="424" y="257" text-anchor="middle" font-size="9">billed — inventory</text>
+290|    <text x="424" y="270" text-anchor="middle" font-size="8" fill="#c0625a" font-weight="600">miscounted GAP-1</text>
+291|    <!-- MANAGER ROW -->
+292|    <rect x="95" y="336" width="140" height="55" rx="4" fill="#fef3e2" stroke="#c8963c" stroke-width="1.5"/>
+293|    <text x="165" y="353" text-anchor="middle" font-size="8.5">Manually notices zero/</text>
+294|    <text x="165" y="365" text-anchor="middle" font-size="8.5">negative stock</text>
+295|    <text x="165" y="377" text-anchor="middle" font-size="8" fill="#c8963c" font-weight="600">No alert — GAP-3</text>
+296|    <line x1="235" y1="363" x2="258" y2="363" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+297|    <rect x="258" y="336" width="140" height="55" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+298|    <text x="328" y="353" text-anchor="middle" font-size="8.5">Reviews sales activity</text>
+299|    <text x="328" y="365" text-anchor="middle" font-size="8.5">and demand in system</text>
+300|    <line x1="398" y1="363" x2="421" y2="363" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+301|    <rect x="421" y="336" width="135" height="55" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+302|    <text x="488" y="353" text-anchor="middle" font-size="8.5">Determines reorder</text>
+303|    <text x="488" y="365" text-anchor="middle" font-size="8.5">quantity</text>
+304|    <line x1="556" y1="363" x2="579" y2="363" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+305|    <rect x="579" y="336" width="145" height="55" rx="4" fill="#fdecea" stroke="#c0625a" stroke-width="1.5"/>
+306|    <text x="651" y="351" text-anchor="middle" font-size="8.5">Orders via WhatsApp</text>
+307|    <text x="651" y="363" text-anchor="middle" font-size="8.5">or call — no system</text>
+308|    <text x="651" y="375" text-anchor="middle" font-size="8" fill="#c0625a" font-weight="600">record — GAP-2</text>
+309|    <line x1="724" y1="363" x2="747" y2="363" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+310|    <rect x="747" y="336" width="140" height="55" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+311|    <text x="817" y="353" text-anchor="middle" font-size="8.5">Delivery arrives —</text>
+312|    <text x="817" y="365" text-anchor="middle" font-size="8.5">manually verified</text>
+313|    <line x1="887" y1="363" x2="910" y2="363" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+314|    <rect x="910" y="336" width="145" height="55" rx="4" fill="#fdecea" stroke="#c0625a" stroke-width="1.5"/>
+315|    <text x="982" y="351" text-anchor="middle" font-size="8.5">PO created AFTER</text>
+316|    <text x="982" y="363" text-anchor="middle" font-size="8.5">delivery — inventory</text>
+317|    <text x="982" y="375" text-anchor="middle" font-size="8" fill="#c0625a" font-weight="600">updated — GAP-5</text>
+318|    <!-- SUPPLIER -->
+319|    <rect x="579" y="436" width="145" height="42" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+320|    <text x="651" y="453" text-anchor="middle" font-size="8.5">Receives order via</text>
+321|    <text x="651" y="465" text-anchor="middle" font-size="8.5">WhatsApp or phone</text>
+322|    <line x1="724" y1="457" x2="747" y2="457" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+323|    <rect x="747" y="436" width="140" height="42" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+324|    <text x="817" y="453" text-anchor="middle" font-size="8.5">Processes and</text>
+325|    <text x="817" y="465" text-anchor="middle" font-size="8.5">dispatches delivery</text>
+326|    <!-- EOD -->
+327|    <rect x="95" y="514" width="140" height="48" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+328|    <text x="165" y="531" text-anchor="middle" font-size="8.5">Manager runs</text>
+329|    <text x="165" y="543" text-anchor="middle" font-size="8.5">EOD cash report</text>
+330|    <line x1="235" y1="538" x2="258" y2="538" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+331|    <rect x="258" y="514" width="155" height="48" rx="4" fill="#fef3e2" stroke="#c8963c" stroke-width="1.5"/>
+332|    <text x="335" y="531" text-anchor="middle" font-size="8.5">Cash discrepancy found</text>
+333|    <text x="335" y="543" text-anchor="middle" font-size="8.5">— unrecorded sales</text>
+334|    <line x1="413" y1="538" x2="436" y2="538" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+335|    <rect x="436" y="514" width="160" height="48" rx="4" fill="#fdecea" stroke="#c0625a" stroke-width="1.5"/>
+336|    <text x="516" y="529" text-anchor="middle" font-size="8.5">Products manually added</text>
+337|    <text x="516" y="541" text-anchor="middle" font-size="8.5">to resolve discrepancy</text>
+338|    <text x="516" y="553" text-anchor="middle" font-size="8" fill="#c0625a" font-weight="600">GAP-4</text>
+339|    <line x1="596" y1="538" x2="619" y2="538" stroke="#555" stroke-width="1.5" marker-end="url(#a1)"/>
+340|    <rect x="619" y="514" width="165" height="48" rx="4" fill="#fdecea" stroke="#c0625a" stroke-width="1.5"/>
+341|    <text x="701" y="529" text-anchor="middle" font-size="8.5">Inventory count inaccurate</text>
+342|    <text x="701" y="541" text-anchor="middle" font-size="8.5">— actual stock unknown</text>
+343|    <text x="701" y="553" text-anchor="middle" font-size="8" fill="#c0625a" font-weight="600">GAP-4</text>
+344|    <!-- cross-lane arrows -->
+345|    <line x1="703" y1="172" x2="703" y2="308" stroke="#c8963c" stroke-width="1" stroke-dasharray="4"/>
+346|    <line x1="703" y1="308" x2="165" y2="336" stroke="#c8963c" stroke-width="1" stroke-dasharray="4" marker-end="url(#a1o)"/>
+347|    <line x1="651" y1="419" x2="651" y2="391" stroke="#555" stroke-width="1" stroke-dasharray="3" marker-end="url(#a1)"/>
+348|    <line x1="817" y1="419" x2="817" y2="391" stroke="#555" stroke-width="1" stroke-dasharray="3" marker-end="url(#a1)"/>
+349|  </svg>
+350|  </div>
+351|  <div class="legend">
+352|    <div class="li"><div class="sw" style="background:#eaf4ea;border:1.5px solid #5a9c6e;border-radius:50%;"></div>Start / End</div>
+353|    <div class="li"><div class="sw" style="background:#eaf0fb;border:1.5px solid #7a9cc8;"></div>Process Step</div>
+354|    <div class="li"><div class="sw" style="background:#f0eaf8;border:1.5px solid #8a6ab5;"></div>System Action</div>
+355|    <div class="li"><div class="sw" style="background:#fef9e7;border:1.5px solid #c8963c;"></div>Decision</div>
+356|    <div class="li"><div class="sw" style="background:#fef3e2;border:1.5px solid #c8963c;"></div>Risk / Warning</div>
+357|    <div class="li"><div class="sw" style="background:#fdecea;border:1.5px solid #c0625a;"></div>Process Gap</div>
+358|  </div>
+359|</div>
+360|
+<!-- SECTION 4: TO-BE PROCESS MAP -->
+<div class="card" id="tobe">
+  <div class="section-label">Section 4</div>
+  <h2>To-Be Process Map — Target State</h2>
+  <p>The following diagram shows the improved process after all six gaps are resolved. Steps highlighted in green indicate fixes. All reorder and parts workflows are integrated into the system.</p>
+  <div class="diagram-scroll">
+  <svg width="1200" height="580" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,Arial,sans-serif">
+    <defs>
+      <marker id="b1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#555"/></marker>
+      <marker id="b1g" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#2d6a4f"/></marker>
+    </defs>
+    <rect x="1" y="1" width="1198" height="578" rx="6" fill="none" stroke="#bbb" stroke-width="2"/>
+    <rect x="1" y="1" width="1198" height="32" rx="6" fill="#1d3557"/>
+    <text x="600" y="21" text-anchor="middle" fill="white" font-size="12" font-weight="700" letter-spacing="0.8">CLIENT ORGANISATION — STOCK MANAGEMENT TO-BE PROCESS (TARGET STATE)</text>
+    <!-- Lanes -->
+    <rect x="1" y="33" width="1198" height="78" fill="#f7f9ff" stroke="#ddd" stroke-width="1"/>
+    <rect x="1" y="33" width="80" height="78" fill="#374785"/>
+    <text x="41" y="74" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,74)">CUSTOMER</text>
+    <rect x="1" y="111" width="1198" height="208" fill="#fafffe" stroke="#ddd" stroke-width="1"/>
+    <rect x="1" y="111" width="80" height="208" fill="#2d6a4f"/>
+    <text x="41" y="215" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,215)">STAFF</text>
+    <rect x="1" y="319" width="1198" height="100" fill="#f7f9ff" stroke="#ddd" stroke-width="1"/>
+    <rect x="1" y="319" width="80" height="100" fill="#1d3557"/>
+    <text x="41" y="369" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,369)">MANAGER</text>
+    <rect x="1" y="419" width="1198" height="78" fill="#fafafa" stroke="#ddd" stroke-width="1"/>
+    <rect x="1" y="419" width="80" height="78" fill="#6d4c41"/>
+    <text x="41" y="458" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,458)">SUPPLIER</text>
+    <rect x="1" y="497" width="1198" height="82" fill="#f9f7ff" stroke="#ddd" stroke-width="1"/>
+    <rect x="1" y="497" width="80" height="82" fill="#4a4a6a"/>
+    <text x="41" y="538" text-anchor="middle" fill="white" font-size="10" font-weight="700" transform="rotate(-90,41,538)">END OF DAY</text>
+    <!-- CUSTOMER -->
+    <ellipse cx="140" cy="72" rx="48" ry="24" fill="#eaf4ea" stroke="#5a9c6e" stroke-width="1.5"/>
+    <text x="140" y="69" text-anchor="middle" font-size="9" font-weight="600">Customer</text>
+    <text x="140" y="80" text-anchor="middle" font-size="9" font-weight="600">requests product</text>
+    <line x1="188" y1="72" x2="210" y2="72" stroke="#555" stroke-width="1.5" marker-end="url(#b1)"/>
+    <rect x="210" y="52" width="115" height="40" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+    <text x="267" y="69" text-anchor="middle" font-size="9">Approaches counter</text>
+    <text x="267" y="81" text-anchor="middle" font-size="9">or browsing</text>
+    <!-- STAFF YES PATH -->
+    <rect x="95" y="130" width="115" height="40" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+    <text x="152" y="147" text-anchor="middle" font-size="9">Staff scans</text>
+    <text x="152" y="159" text-anchor="middle" font-size="9">product barcode</text>
+    <line x1="210" y1="150" x2="238" y2="150" stroke="#555" stroke-width="1.5" marker-end="url(#b1)"/>
+    <polygon points="268,130 318,150 268,170 218,150" fill="#fef9e7" stroke="#c8963c" stroke-width="1.5"/>
+    <text x="268" y="147" text-anchor="middle" font-size="8" font-weight="600">Product in</text>
+    <text x="268" y="158" text-anchor="middle" font-size="8" font-weight="600">system?</text>
+    <line x1="318" y1="150" x2="348" y2="150" stroke="#2d6a4f" stroke-width="1.5" marker-end="url(#b1g)"/>
+    <text x="332" y="144" text-anchor="middle" font-size="8" fill="#2d6a4f" font-weight="600">YES</text>
+    <rect x="348" y="130" width="115" height="40" rx="4" fill="#f0eaf8" stroke="#8a6ab5" stroke-width="1.5"/>
+    <text x="405" y="147" text-anchor="middle" font-size="9">Process sale in</text>
+    <text x="405" y="159" text-anchor="middle" font-size="9">Sale Register</text>
+    <line x1="463" y1="150" x2="493" y2="150" stroke="#555" stroke-width="1.5" marker-end="url(#b1)"/>
+    <rect x="493" y="130" width="115" height="40" rx="4" fill="#f0eaf8" stroke="#8a6ab5" stroke-width="1.5"/>
+    <text x="550" y="147" text-anchor="middle" font-size="9">Stock count</text>
+    <text x="550" y="159" text-anchor="middle" font-size="9">reduces by 1</text>
+    <line x1="608" y1="150" x2="638" y2="150" stroke="#555" stroke-width="1.5" marker-end="url(#b1)"/>
+    <rect x="638" y="128" width="140" height="44" rx="4" fill="#eaf4ea" stroke="#2d6a4f" stroke-width="1.5"/>
+    <text x="708" y="145" text-anchor="middle" font-size="9">System checks stock</text>
+    <text x="708" y="157" text-anchor="middle" font-size="9">vs threshold → alert</text>
+    <text x="708" y="168" text-anchor="middle" font-size="8" fill="#2d6a4f" font-weight="600">FIX: Auto-alert — GAP-3</text>
+    <!-- NO PATH FIXED -->
+    <line x1="268" y1="170" x2="268" y2="228" stroke="#2d6a4f" stroke-width="1.5" marker-end="url(#b1g)"/>
+    <text x="275" y="204" font-size="8" fill="#555" font-weight="600">NO</text>
+    <rect x="210" y="228" width="135" height="52" rx="4" fill="#eaf4ea" stroke="#2d6a4f" stroke-width="1.5"/>
+    <text x="277" y="245" text-anchor="middle" font-size="9">System blocks sale —</text>
+    <text x="277" y="257" text-anchor="middle" font-size="9">prompts product creation</text>
+    <text x="277" y="270" text-anchor="middle" font-size="8" fill="#2d6a4f" font-weight="600">FIX: No manual search — GAP-1</text>
+    <line x1="345" y1="254" x2="372" y2="254" stroke="#2d6a4f" stroke-width="1.5" marker-end="url(#b1g)"/>
+    <rect x="372" y="228" width="130" height="52" rx="4" fill="#eaf4ea" stroke="#2d6a4f" stroke-width="1.5"/>
+    <text x="437" y="245" text-anchor="middle" font-size="9">Barcode assigned —</text>
+    <text x="437" y="257" text-anchor="middle" font-size="9">sale proceeds correctly</text>
+    <!-- MANAGER -->
+    <rect x="95" y="333" width="155" height="58" rx="4" fill="#eaf4ea" stroke="#2d6a4f" stroke-width="1.5"/>
+    <text x="172" y="350" text-anchor="middle" font-size="8.5">System sends auto alert</text>
+    <text x="172" y="362" text-anchor="middle" font-size="8.5">at configured threshold</text>
+    <text x="172" y="374" text-anchor="middle" font-size="8" fill="#2d6a4f" font-weight="600">FIX: Automated — GAP-3</text>
+    <line x1="250" y1="362" x2="273" y2="362" stroke="#555" stroke-width="1.5" marker-end="url(#b1)"/>
+    <rect x="273" y="333" width="145" height="58" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+    <text x="345" y="354" text-anchor="middle" font-size="8.5">Manager reviews demand</text>
+    <text x="345" y="366" text-anchor="middle" font-size="8.5">data in system</text>
+    <line x1="418" y1="362" x2="441" y2="362" stroke="#555" stroke-width="1.5" marker-end="url(#b1)"/>
+    <rect x="441" y="333" width="155" height="58" rx="4" fill="#eaf4ea" stroke="#2d6a4f" stroke-width="1.5"/>
+    <text x="518" y="350" text-anchor="middle" font-size="8.5">PO raised IN system —</text>
+    <text x="518" y="362" text-anchor="middle" font-size="8.5">supplier &amp; date selected</text>
+    <text x="518" y="374" text-anchor="middle" font-size="8" fill="#2d6a4f" font-weight="600">FIX: In-system — GAP-2</text>
+    <line x1="596" y1="362" x2="619" y2="362" stroke="#555" stroke-width="1.5" marker-end="url(#b1)"/>
+    <rect x="619" y="333" width="155" height="58" rx="4" fill="#eaf4ea" stroke="#2d6a4f" stroke-width="1.5"/>
+    <text x="696" y="350" text-anchor="middle" font-size="8.5">Expected delivery date</text>
+    <text x="696" y="362" text-anchor="middle" font-size="8.5">recorded in system</text>
+    <text x="696" y="374" text-anchor="middle" font-size="8" fill="#2d6a4f" font-weight="600">FIX: Tracked — GAP-5</text>
+    <line x1="774" y1="362" x2="797" y2="362" stroke="#555" stroke-width="1.5" marker-end="url(#b1)"/>
+    <rect x="797" y="333" width="145" height="58" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+    <text x="869" y="354" text-anchor="middle" font-size="8.5">Delivery verified against</text>
+    <text x="869" y="366" text-anchor="middle" font-size="8.5">system PO reference</text>
+    <line x1="942" y1="362" x2="965" y2="362" stroke="#555" stroke-width="1.5" marker-end="url(#b1)"/>
+    <rect x="965" y="333" width="150" height="58" rx="4" fill="#f0eaf8" stroke="#8a6ab5" stroke-width="1.5"/>
+    <text x="1040" y="350" text-anchor="middle" font-size="8.5">PO closed — inventory</text>
+    <text x="1040" y="362" text-anchor="middle" font-size="8.5">updated automatically</text>
+    <!-- SUPPLIER -->
+    <rect x="441" y="436" width="155" height="42" rx="4" fill="#eaf4ea" stroke="#2d6a4f" stroke-width="1.5"/>
+    <text x="518" y="453" text-anchor="middle" font-size="8.5">Receives formal PO</text>
+    <text x="518" y="465" text-anchor="middle" font-size="8.5">via system or email</text>
+    <line x1="596" y1="457" x2="619" y2="457" stroke="#555" stroke-width="1.5" marker-end="url(#b1)"/>
+    <rect x="619" y="436" width="150" height="42" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+    <text x="694" y="453" text-anchor="middle" font-size="8.5">Confirms order and</text>
+    <text x="694" y="465" text-anchor="middle" font-size="8.5">expected dispatch date</text>
+    <line x1="769" y1="457" x2="797" y2="457" stroke="#555" stroke-width="1.5" marker-end="url(#b1)"/>
+    <rect x="797" y="436" width="145" height="42" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+    <text x="869" y="453" text-anchor="middle" font-size="8.5">Dispatches with</text>
+    <text x="869" y="465" text-anchor="middle" font-size="8.5">reference number</text>
+    <!-- EOD FIXED -->
+    <rect x="95" y="514" width="145" height="48" rx="4" fill="#eaf0fb" stroke="#7a9cc8" stroke-width="1.5"/>
+    <text x="167" y="531" text-anchor="middle" font-size="8.5">Manager runs</text>
+    <text x="167" y="543" text-anchor="middle" font-size="8.5">EOD report</text>
+    <line x1="240" y1="538" x2="263" y2="538" stroke="#555" stroke-width="1.5" marker-end="url(#b1)"/>
+    <rect x="263" y="514" width="165" height="48" rx="4" fill="#eaf4ea" stroke="#2d6a4f" stroke-width="1.5"/>
+    <text x="345" y="529" text-anchor="middle" font-size="8.5">System flags unrecorded</text>
+    <text x="345" y="541" text-anchor="middle" font-size="8.5">transactions before close</text>
+    <text x="345" y="553" text-anchor="middle" font-size="8" fill="#2d6a4f" font-weight="600">FIX: Locked EOD — GAP-4</text>
+    <line x1="428" y1="538" x2="451" y2="538" stroke="#555" stroke-width="1.5" marker-end="url(#b1)"/>
+    <rect x="451" y="514" width="170" height="48" rx="4" fill="#eaf4ea" stroke="#2d6a4f" stroke-width="1.5"/>
+    <text x="536" y="529" text-anchor="middle" font-size="8.5">Staff records missed sales —</text>
+    <text x="536" y="541" text-anchor="middle" font-size="8.5">transaction completed correctly</text>
+    <line x1="621" y1="538" x2="644" y2="538" stroke="#555" stroke-width="1.5" marker-end="url(#b1)"/>
+    <rect x="644" y="514" width="170" height="48" rx="4" fill="#eaf4ea" stroke="#2d6a4f" stroke-width="1.5"/>
+    <text x="729" y="529" text-anchor="middle" font-size="8.5">EOD closes — inventory</text>
+    <text x="729" y="541" text-anchor="middle" font-size="8.5">count accurate and trusted</text>
+    <!-- cross-lane -->
+    <line x1="708" y1="172" x2="708" y2="308" stroke="#2d6a4f" stroke-width="1" stroke-dasharray="4"/>
+    <line x1="708" y1="308" x2="172" y2="333" stroke="#2d6a4f" stroke-width="1" stroke-dasharray="4" marker-end="url(#b1g)"/>
+    <line x1="518" y1="419" x2="518" y2="391" stroke="#555" stroke-width="1" stroke-dasharray="3" marker-end="url(#b1)"/>
+    <line x1="869" y1="419" x2="869" y2="391" stroke="#555" stroke-width="1" stroke-dasharray="3" marker-end="url(#b1)"/>
+  </svg>
+  </div>
+  <div class="legend">
+    <div class="li"><div class="sw" style="background:#eaf4ea;border:1.5px solid #5a9c6e;border-radius:50%;"></div>Start / End</div>
+    <div class="li"><div class="sw" style="background:#eaf0fb;border:1.5px solid #7a9cc8;"></div>Process Step</div>
+    <div class="li"><div class="sw" style="background:#f0eaf8;border:1.5px solid #8a6ab5;"></div>System Action</div>
+    <div class="li"><div class="sw" style="background:#fef9e7;border:1.5px solid #c8963c;"></div>Decision</div>
+    <div class="li"><div class="sw" style="background:#eaf4ea;border:1.5px solid #2d6a4f;"></div>Fix / Improvement</div>
+
+<!-- SECTION 5: REQUIREMENTS -->
+<div class="card" id="reqs">
+  <div class="section-label">Section 5</div>
+  <h2>Business Requirements Specification</h2>
+  <p>The following requirements are derived directly from the six identified gaps. Each requirement is written in "The system shall..." format and includes measurable acceptance criteria suitable for UAT verification.</p>
+  <table>
+    <thead>
+      <tr><th width="70">Req ID</th><th width="65">Gap Ref</th><th width="90">Type</th><th>Business Requirement</th><th>Acceptance Criteria</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="req-id">BR-01</td><td>GAP-3</td><td><span class="badge blue">Functional</span></td>
+        <td>The system shall generate an automated low stock alert when any product reaches or falls below a configurable reorder threshold</td>
+        <td>Alert delivered to manager dashboard and email within 60 seconds of threshold breach. Threshold configurable per SKU. No manual check required to trigger alert.</td>
+      </tr>
+      <tr>
+        <td class="req-id">BR-02</td><td>GAP-2</td><td><span class="badge blue">Functional</span></td>
+        <td>The system shall allow managers to raise a Purchase Order directly within the system, selecting supplier, product, quantity, and expected delivery date</td>
+        <td>PO created, timestamped, and assigned a unique reference number. Supplier notified via system-generated email. PO visible in inventory module with status: Open / In Transit / Received.</td>
+      </tr>
+      <tr>
+        <td class="req-id">BR-03</td><td>GAP-1</td><td><span class="badge blue">Functional</span></td>
+        <td>The system shall block sale completion when a product barcode is not found and shall not permit manual name-based product selection as a fallback</td>
+        <td>Unrecognised barcode triggers a product creation prompt. Sale cannot proceed until a valid barcode is assigned. Free-text product selection not available to staff during billing.</td>
+      </tr>
+      <tr>
+        <td class="req-id">BR-04</td><td>GAP-4</td><td><span class="badge blue">Functional</span></td>
+        <td>The system shall prevent End of Day close if unrecorded transactions are detected, requiring all transactions to be completed or explicitly voided before EOD is finalised</td>
+        <td>EOD close button disabled if cash variance exceeds configurable tolerance (default: €0). System prompts staff to record outstanding transactions. Manual stock adjustment to balance cash register not permitted.</td>
+      </tr>
+      <tr>
+        <td class="req-id">BR-05</td><td>GAP-5</td><td><span class="badge blue">Functional</span></td>
+        <td>The system shall require a Purchase Order to exist and be in Open status before a delivery can be received and inventory updated</td>
+        <td>Goods receipt module only accessible for products linked to an open PO. Inventory update triggers automatic PO status change to Received. Retrospective PO creation not permitted after goods receipt.</td>
+      </tr>
+      <tr>
+        <td class="req-id">BR-06</td><td>GAP-6</td><td><span class="badge blue">Functional</span></td>
+        <td>The system shall require parts used in any repair or refurbishment job to be selected from inventory SKUs and automatically deducted from stock on job completion</td>
+        <td>Job ticket must include a parts list linked to inventory SKUs before job can be set to Complete. Stock count reduces automatically on job completion. Manual stock adjustment for repair parts not permitted outside job ticket workflow.</td>
+      </tr>
+      <tr>
+        <td class="req-id">NFR-01</td><td>All</td><td><span class="badge med">Non-Functional</span></td>
+        <td>Stock level updates shall reflect in the system within 60 seconds of any sale, goods receipt, return, or job completion being processed</td>
+        <td>System availability 99.9% during trading hours (09:00–21:00). Update latency not to exceed 60 seconds under normal load. System must support minimum 1,000 active SKUs without performance degradation.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 6: BUSINESS CASE -->
+<div class="card" id="bizcase">
+  <div class="section-label">Section 6</div>
+  <h2>Business Case &amp; Return on Investment</h2>
+
+  <h3>6.1 Cost of the Problem</h3>
+
+  <p><strong>GAP-4: Phantom Inventory from Faulty Returns</strong></p>
+  <p>When a customer returns a faulty item, the refund adds +1 back to system inventory. The physical unit goes to the faulty box and is unsellable. The system believes the stock exists — it does not.</p>
+  <table>
+    <thead><tr><th>Item</th><th>Assumption</th><th class="num">Monthly</th><th class="num">Annual</th></tr></thead>
+    <tbody>
+      <tr><td>Faulty returns (accessories)</td><td>10 units/month — 2-3/week conservative estimate</td><td class="num">10 units</td><td class="num">120 units</td></tr>
+      <tr><td>Average accessory value</td><td>€20 average selling price</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>Phantom stock value created</td><td>Units refunded but physically unsellable</td><td class="num">€200</td><td class="num">€2,400</td></tr>
+      <tr class="total-row"><td colspan="2">Annual phantom inventory — faulty returns</td><td></td><td class="num">€2,400</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:18px;"><strong>GAP-4: Manager Time Lost to EOD Reconciliation</strong></p>
+  <table>
+    <thead><tr><th>Item</th><th>Assumption</th><th class="num">Weekly</th><th class="num">Annual</th></tr></thead>
+    <tbody>
+      <tr><td>Busy days with EOD discrepancy</td><td>3 days/week on average</td><td class="num">3 days</td><td class="num">156 days</td></tr>
+      <tr><td>Extra resolution time per discrepancy</td><td>20 min extra vs a clean close</td><td class="num">60 min</td><td class="num">52 hrs</td></tr>
+      <tr><td>Manager hourly cost</td><td>€14.15/hr</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr class="total-row"><td colspan="2">Annual manager time cost — EOD reconciliation</td><td></td><td class="num">~€735</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:18px;"><strong>GAP-6: Refurbishment Parts Not Deducted from Inventory</strong></p>
+  <p>Parts pulled from stock for trade-in/refurb jobs are never deducted. System shows phantom stock. Cost-of-goods on resold devices is understated.</p>
+  <table>
+    <thead><tr><th>Item</th><th>Assumption</th><th class="num">Monthly</th><th class="num">Annual</th></tr></thead>
+    <tbody>
+      <tr><td>Refurbishment jobs</td><td>3–4 jobs/week average</td><td class="num">~15 jobs</td><td class="num">~180 jobs</td></tr>
+      <tr><td>Average parts cost per job (at cost price)</td><td>€20 avg — single part €10–15, multi-part €25–50</td><td class="num">€300</td><td class="num">€3,600</td></tr>
+      <tr><td>Parts actually deducted from inventory</td><td>None — no systematic deduction process exists</td><td class="num">€0</td><td class="num">€0</td></tr>
+      <tr class="total-row"><td colspan="2">Annual parts inventory consumed but never recorded</td><td></td><td class="num">~€3,360</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout red" style="margin-top:14px;">
+    <strong>Compound Effect</strong>
+    System shows repair parts as available when already consumed. Technicians discover shortages only at the shelf — causing job delays, emergency orders at premium cost, and inaccurate gross margin on every refurbished device sold.
+  </div>
+
+  <h3>6.2 Cost of the Fix</h3>
+  <div class="two-col">
+    <div>
+      <table>
+        <thead><tr><th>Fix</th><th>Gap</th><th>Type</th><th class="num">Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Configure low stock alert per SKU</td><td>GAP-3</td><td><span class="badge grn">Config</span></td><td class="num">€0</td></tr>
+          <tr><td>Build in-system PO workflow</td><td>GAP-2</td><td><span class="badge grn">Config</span></td><td class="num">€0</td></tr>
+          <tr><td>Enforce barcode-only billing</td><td>GAP-1</td><td><span class="badge grn">Config</span></td><td class="num">€0</td></tr>
+          <tr><td>Faulty stock register (separate location)</td><td>GAP-4</td><td><span class="badge high">Process</span></td><td class="num">€0</td></tr>
+          <tr><td>EOD transaction lock</td><td>GAP-4</td><td><span class="badge high">Process</span></td><td class="num">€0</td></tr>
+          <tr><td>Bill of Materials for refurb job tickets</td><td>GAP-6</td><td><span class="badge high">Process</span></td><td class="num">€0–€75/mo*</td></tr>
+          <tr><td>Staff training — barcode, returns, EOD</td><td>All</td><td><span class="badge high">Training</span></td><td class="num">~€150</td></tr>
+          <tr class="total-row"><td colspan="3">Total estimated cost</td><td class="num">~€150</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;color:#888;margin-top:6px;">*If existing system does not support BOM/job tickets natively, RepairDesk at €75/mo includes this feature.</p>
+    </div>
+    <div>
+      <table>
+        <thead><tr><th>Alternative Platform (if required)</th><th class="num">Monthly</th></tr></thead>
+        <tbody>
+          <tr><td>RepairDesk — repairs + POS + BOM + inventory</td><td class="num">€75/mo</td></tr>
+          <tr><td>Lightspeed Retail — strong 1,000+ SKU support</td><td class="num">€109/mo</td></tr>
+          <tr><td>Shopify POS — retail + inventory</td><td class="num">€89/mo</td></tr>
+          <tr><td>Square for Retail — entry level</td><td class="num">€60/mo</td></tr>
+        </tbody>
+      </table>
+      <div class="callout" style="margin-top:12px;">RepairDesk is the recommended platform if the existing system cannot support job-ticket BOM or automated alerts — it is purpose-built for the repair + retail combination.</div>
+    </div>
+  </div>
+
+  <h3>6.3 Return on Investment</h3>
+  <table>
+    <thead><tr><th>Benefit Item</th><th class="num">Annual Value</th></tr></thead>
+    <tbody>
+      <tr><td>Phantom inventory reduction — faulty returns tracked (GAP-4)</td><td class="num">€2,400</td></tr>
+      <tr><td>Parts inventory accuracy — refurb parts auto-deducted (GAP-6)</td><td class="num">€3,360</td></tr>
+      <tr><td>Manager time recovered from EOD reconciliation — 52 hrs x €14.15</td><td class="num">€735</td></tr>
+      <tr><td>Improved reorder accuracy — conservative 5% reduction in over-ordering</td><td class="num">~€600</td></tr>
+      <tr><td>Intangible: reliable inventory data for all buying and supplier decisions</td><td class="num">Unquantified</td></tr>
+      <tr class="total-row"><td>Total quantifiable annual benefit</td><td class="num">~€7,095</td></tr>
+      <tr><td>Total implementation cost</td><td class="num">~€150</td></tr>
+      <tr class="total-row"><td>Estimated payback period</td><td class="num">&lt; 1 month</td></tr>
+    </tbody>
+  </table>
+  <div class="callout green" style="margin-top:14px;">
+    <strong>Conclusion</strong>
+    The investment is minimal — primarily staff time and a single training session. The benefit is disproportionate: reliable inventory data across 1,000+ SKUs, recovered manager time, accurate cost-of-goods on refurbished devices, and a complete audit trail for all stock movements. This is a process discipline problem, not a technology problem — the technology already exists in the current system and is not being used correctly.
+  </div>
+</div>
+
+<!-- SECTION 7: RISKS -->
+<div class="card" id="risks">
+  <div class="section-label">Section 7</div>
+  <h2>Risks &amp; Assumptions</h2>
+  <table>
+    <thead><tr><th>Risk</th><th width="90">Likelihood</th><th width="80">Impact</th><th>Mitigation</th></tr></thead>
+    <tbody>
+      <tr><td>Existing system does not support automated low stock alerts</td><td><span class="badge high">Medium</span></td><td><span class="badge crit">High</span></td><td>Evaluate system capabilities before rollout. If unsupported, escalate to platform review — RepairDesk recommended.</td></tr>
+      <tr><td>Staff resistance to barcode enforcement during busy periods</td><td><span class="badge high">Medium</span></td><td><span class="badge high">Medium</span></td><td>Training session explaining rationale. Streamlined product creation flow reduces friction. Manager spot-check first 2 weeks.</td></tr>
+      <tr><td>Technician resistance to logging parts per job ticket</td><td><span class="badge high">Medium</span></td><td><span class="badge crit">High</span></td><td>RepairDesk job ticket takes under 30 seconds. Mandate as part of job completion — cannot mark job Complete without parts list.</td></tr>
+      <tr><td>Faulty return volume higher than 10/month in peak periods</td><td><span class="badge grn">Low</span></td><td><span class="badge high">Medium</span></td><td>Figures are conservative. Business case remains valid at 2x assumed volume.</td></tr>
+      <tr><td>Supplier prefers WhatsApp over formal PO system</td><td><span class="badge high">Medium</span></td><td><span class="badge grn">Low</span></td><td>Internal PO can be raised for audit purposes even if supplier communication stays informal. Audit trail is internal.</td></tr>
+      <tr><td>Cost assumptions based on estimates — actual figures may vary</td><td><span class="badge high">Medium</span></td><td><span class="badge high">Medium</span></td><td>All figures clearly labelled as estimates. Recommend 30-day tracking period after implementation to validate actuals.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 8: NEXT STEPS -->
+<div class="card" id="nextsteps">
+  <div class="section-label">Section 8</div>
+  <h2>Recommended Next Steps</h2>
+  <table>
+    <thead><tr><th width="30">#</th><th>Action</th><th width="160">Owner</th><th width="110">Timeline</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Review existing system capabilities against BR-01 to BR-06 — identify which requirements can be met with configuration vs require a new platform</td><td>Manager / System Admin</td><td>Week 1</td></tr>
+      <tr><td>2</td><td>Create separate inventory location for faulty stock — all returns physically separated and tracked as a distinct location in system</td><td>Manager</td><td>Week 1</td></tr>
+      <tr><td>3</td><td>Configure low stock alert thresholds for top 100 high-velocity SKUs</td><td>Manager</td><td>Week 1–2</td></tr>
+      <tr><td>4</td><td>Deliver staff training on: barcode discipline, correct returns process, EOD procedure, and why manual workarounds cause inventory drift</td><td>Manager</td><td>Week 2</td></tr>
+      <tr><td>5</td><td>Enforce EOD transaction lock — register cannot close until cash variance is within tolerance and all transactions are recorded correctly</td><td>Manager</td><td>Week 2</td></tr>
+      <tr><td>6</td><td>Implement job ticket with Bill of Materials for all refurb and repair jobs — parts must be logged and linked to inventory before job is marked Complete</td><td>Manager / Technician</td><td>Week 2–3</td></tr>
+      <tr><td>7</td><td>30-day review — measure EOD discrepancy frequency, phantom stock reduction, and parts inventory accuracy against pre-implementation baseline</td><td>Manager / Analyst</td><td>Week 6</td></tr>
+      <tr><td>8</td><td>If existing system cannot support BR-01 (auto alerts) or BR-06 (BOM job tickets), initiate platform evaluation — RepairDesk as first option</td><td>Manager</td><td>Week 8</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>Prepared as part of BA Portfolio &nbsp;·&nbsp; Sanjay Prakash Ravi &nbsp;·&nbsp; MSc Business Analytics, Dublin Business School &nbsp;·&nbsp; prakesh3851@gmail.com</p>
+  <p style="margin-top:6px;">sanjayprakash-git.github.io/portfolio &nbsp;·&nbsp; linkedin.com/in/sanjay-prakash-a92291186</p>
+  <p style="margin-top:8px;font-size:10px;">© 2026 — Business Analysis Portfolio Document. Company name anonymised. All data based on real operational analysis.</p>
+</div>
+
+</div>
+</body>
+</html>
