@@ -379,7 +379,7 @@ h2 {
 
 /* CASE STUDIES — dark section */
 #casestudies {
-    background: var(--bg-section);
+    background: #0a0a0a;
 }
 
 #casestudies h2 {
@@ -387,8 +387,8 @@ h2 {
 }
 
 .case-study {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
+    background: #1e1e1e;
+    border: 1px solid rgba(255,255,255,0.15);
     border-radius: 0;
     padding: 2.25rem;
     margin-bottom: 1.25rem;
@@ -581,7 +581,7 @@ h2 {
 
 /* ABOUT — dark */
 #about {
-    background: var(--bg);
+    background: #0a0a0a;
 }
 
 #about h2 {
