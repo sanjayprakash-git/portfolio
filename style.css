@@ -379,7 +379,7 @@ h2 {
 
 /* CASE STUDIES — dark section */
 #casestudies {
-    background: #0a0a0a;
+    background: #0a0a0a !important;
 }
 
 #casestudies h2 {
@@ -393,6 +393,7 @@ h2 {
     padding: 2.25rem;
     margin-bottom: 1.25rem;
     transition: all 0.3s ease;
+    color: var(--text-dim);
 }
 
 .case-study:hover {
@@ -489,7 +490,7 @@ h2 {
 /* FEATURED CASE STUDY */
 .case-featured {
     border-color: rgba(200, 241, 53, 0.3);
-    background: linear-gradient(135deg, rgba(200,241,53,0.04) 0%, var(--bg-card) 100%);
+    background: linear-gradient(135deg, rgba(200,241,53,0.06) 0%, #1e1e1e 100%);
     position: relative;
     padding-top: 2.75rem;
 }
