@@ -381,6 +381,14 @@ Contact: prakesh3851@gmail.com | Dublin, Ireland | Open to BA/Analytics internsh
         document.getElementById('chatbot').classList.toggle('chatbot-hidden');
     }
 
+    // Auto-open chatbot after 3 seconds
+    setTimeout(() => {
+        const chatbot = document.getElementById('chatbot');
+        if (chatbot.classList.contains('chatbot-hidden')) {
+            chatbot.classList.remove('chatbot-hidden');
+        }
+    }, 3000);
+
     async function sendMessage() {
         const input = document.getElementById('chat-input');
         const msg = input.value.trim();
