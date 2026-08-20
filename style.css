@@ -278,8 +278,8 @@ nav a:hover::after {
 }
 
 .capability-card {
-    background: var(--card-bg, #fff);
-    border: 1px solid var(--border, #e5e7eb);
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.07);
     border-radius: 14px;
     padding: 1.5rem 1.25rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -287,34 +287,35 @@ nav a:hover::after {
 
 .capability-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.35);
 }
 
 .capability-card-highlight {
-    border-color: rgba(99, 102, 241, 0.4);
-    background: rgba(99, 102, 241, 0.04);
+    border-color: rgba(200, 241, 53, 0.3);
+    background: rgba(200, 241, 53, 0.04);
 }
 
 .capability-icon {
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: rgba(99, 102, 241, 0.1);
+    background: rgba(200, 241, 53, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
-    color: var(--accent, #6366f1);
+    color: var(--accent);
 }
 
 .capability-card-highlight .capability-icon {
-    background: rgba(99, 102, 241, 0.15);
+    background: rgba(200, 241, 53, 0.15);
 }
 
 .capability-card h4 {
     font-size: 0.95rem;
     font-weight: 700;
     margin-bottom: 0.85rem;
+    color: #fff;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -325,8 +326,8 @@ nav a:hover::after {
     font-size: 0.62rem;
     font-weight: 600;
     padding: 0.15rem 0.5rem;
-    background: rgba(99, 102, 241, 0.15);
-    color: var(--accent, #6366f1);
+    background: rgba(200, 241, 53, 0.15);
+    color: var(--accent);
     border-radius: 999px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -342,16 +343,16 @@ nav a:hover::after {
     font-size: 0.72rem;
     padding: 0.25rem 0.6rem;
     border-radius: 999px;
-    background: var(--tag-bg, #f3f4f6);
-    color: var(--tag-text, #374151);
-    border: 1px solid var(--border, #e5e7eb);
+    background: rgba(255,255,255,0.05);
+    color: #d1d5db;
+    border: 1px solid rgba(255,255,255,0.1);
     font-weight: 500;
 }
 
 .capability-card-highlight .skill-tags span {
-    background: rgba(99, 102, 241, 0.08);
-    border-color: rgba(99, 102, 241, 0.25);
-    color: var(--accent, #6366f1);
+    background: rgba(200, 241, 53, 0.08);
+    border-color: rgba(200, 241, 53, 0.2);
+    color: var(--accent);
 }
 
 @media (max-width: 900px) {
