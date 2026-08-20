@@ -255,6 +255,117 @@ nav a:hover::after {
     text-transform: uppercase;
 }
 
+/* SECTION LABEL & ACCENT */
+.section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent, #6366f1);
+    margin-bottom: 0.4rem;
+}
+
+.accent {
+    color: var(--accent, #6366f1);
+}
+
+/* CAPABILITIES GRID */
+.capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+.capability-card {
+    background: var(--card-bg, #fff);
+    border: 1px solid var(--border, #e5e7eb);
+    border-radius: 14px;
+    padding: 1.5rem 1.25rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.capability-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+}
+
+.capability-card-highlight {
+    border-color: rgba(99, 102, 241, 0.4);
+    background: rgba(99, 102, 241, 0.04);
+}
+
+.capability-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(99, 102, 241, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: var(--accent, #6366f1);
+}
+
+.capability-card-highlight .capability-icon {
+    background: rgba(99, 102, 241, 0.15);
+}
+
+.capability-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.card-badge {
+    font-size: 0.62rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--accent, #6366f1);
+    border-radius: 999px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.skill-tags span {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: var(--tag-bg, #f3f4f6);
+    color: var(--tag-text, #374151);
+    border: 1px solid var(--border, #e5e7eb);
+    font-weight: 500;
+}
+
+.capability-card-highlight .skill-tags span {
+    background: rgba(99, 102, 241, 0.08);
+    border-color: rgba(99, 102, 241, 0.25);
+    color: var(--accent, #6366f1);
+}
+
+@media (max-width: 900px) {
+    .capabilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 540px) {
+    .capabilities-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ELIGIBILITY BADGE */
 .eligibility-badge {
     display: inline-flex;
