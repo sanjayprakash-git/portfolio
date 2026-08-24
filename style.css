@@ -350,10 +350,10 @@ nav a:hover::after {
 }
 
 .capability-card-highlight .skill-tags span {
-    background: rgba(200, 241, 53, 0.12);
-    border-color: rgba(200, 241, 53, 0.4);
-    color: #f0ffd0;
-    font-weight: 600;
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.1);
+    color: #d1d5db;
+    font-weight: 500;
 }
 
 @media (max-width: 900px) {
