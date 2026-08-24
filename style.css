@@ -292,7 +292,7 @@ nav a:hover::after {
 
 .capability-card-highlight {
     border-color: rgba(200, 241, 53, 0.3);
-    background: rgba(200, 241, 53, 0.04);
+    background: var(--card-bg);
 }
 
 .capability-icon {
